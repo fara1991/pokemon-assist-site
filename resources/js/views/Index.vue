@@ -1,5 +1,7 @@
 <template>
-    test
+    <div class="animated fadeIn">
+        test
+    </div>
 </template>
 
 <script>

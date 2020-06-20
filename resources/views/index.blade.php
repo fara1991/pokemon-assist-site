@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ config('app.name') }}</title>
-{{--    <link rel="icon" type="image/png" href="/">--}}
-{{--    <link rel="stylesheet" href="{{ mix('css/app.css') }}">--}}
+    {{--    <link rel="icon" type="image/png" href="/">--}}
+    {{--    <link rel="stylesheet" href="{{ mix('css/app.css') }}">--}}
     <script>
         window.Laravel = {
             scrfToken: "{{ csrf_token() }}"
@@ -16,10 +16,7 @@
 </head>
 <body>
 <div id="app">
-    <div class="container">
-        <router-view></router-view>
-    </div>
 </div>
 </body>
-{{--<script src="{{ mix('js/vue.js') }}"></script>--}}
+<script src="{{ mix('js/vue.js') }}"></script>
 </html>

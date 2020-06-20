@@ -1,17 +1,17 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 
-import Full from '@/full';
+import Full from '@/Full';
 // Components
-import Components from '@/components/';
+// import Components from '@/components/';
 
 // Complete
-import Complete from '@/views/complete/';
+// import Complete from '@/views/complete/';
 
 // Calculation
-import Calculation from '@/views/calculation/';
+// import Calculation from '@/views/calculation/';
 
-import Index from '@/views/index';
+import Index from '@/views/Index';
 
 Vue.use(Router);
 
@@ -25,7 +25,7 @@ export default new Router({
             redirect: '/index',
             name: 'Index',
             component: Full,
-            chileren: [
+            children: [
                 {
                     path: 'index',
                     name: 'index',
