@@ -1,7 +1,11 @@
 import Vue from 'vue';
-import Router from 'vue-router';
+import VueRouter from 'vue-router';
+import BootstrapVue from 'bootstrap-vue';
 
-import Full from '@/Full';
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap-vue/dist/bootstrap-vue.css';
+
+import Base from '@/Base';
 // Components
 // import Components from '@/components/';
 
@@ -9,27 +13,30 @@ import Full from '@/Full';
 // import Complete from '@/views/complete/';
 
 // Calculation
-// import Calculation from '@/views/calculation/';
+// import Calc from '@/views/calc/';
 
 import Index from '@/views/Index';
 
-Vue.use(Router);
+Vue.use(VueRouter);
+Vue.use(BootstrapVue);
 
-export default new Router({
-    mode: 'hash',
-    linkActiveClass: 'open active',
+export default new VueRouter({
     scrollBehavior: () => ({y: 0}),
     routes: [
         {
             path: '/',
             redirect: '/index',
-            name: 'Index',
-            component: Full,
+            component: Base,
             children: [
                 {
                     path: 'index',
                     name: 'index',
                     component: Index,
+                },
+                {
+                    path: 'culc',
+                    name: 'culc',
+                    component: Culc,
                 }
             ],
         }
