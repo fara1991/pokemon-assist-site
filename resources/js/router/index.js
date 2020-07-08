@@ -7,50 +7,65 @@ import 'bootstrap-vue/dist/bootstrap-vue.css';
 
 import Base from '@/Base';
 
-import Index from '@/views/Index';
+// Sword&Shield
+import SwshIndex from '@/views/swsh/Index';
+import SwshCalculation from '@/views/swsh/Calculation';
+import SwshRanking from '@/views/swsh/Ranking';
+import SwshDemo from '@/views/swsh/Demo';
+import SwshRegister from '@/views/swsh/Register';
 
-import Calculation from '@/views/Calculation';
-import Ranking from '@views/ranking';
-import Demo from '@/views/Demo';
-import Register from '@/views/register';
+import NotFound from '@/views/error/404';
 
 Vue.use(VueRouter);
 Vue.use(BootstrapVue);
 
+const routeList = [
+    {
+        path: '/',
+        redirect: '/swsh', // 最新世代にしておく
+        component: Base,
+        children: [
+            {
+                path: 'swsh',
+                redirect: '/swsh/index',
+                component: SwshIndex,
+                children: [
+                    {
+                        path: 'index',
+                        name: 'index',
+                    },
+                    {
+                        path: 'calculation',
+                        name: 'calculation',
+                        component: SwshCalculation,
+                    },
+                    {
+                        path: 'ranking',
+                        name: 'ranking',
+                        component: SwshRanking,
+                    },
+                    {
+                        path: 'demo',
+                        name: 'demo',
+                        component: SwshDemo,
+                    },
+                    {
+                        path: 'register',
+                        name: 'register',
+                        component: SwshRegister,
+                    },
+                ],
+            },
+        ],
+    },
+    {
+        path: '*',
+        name: 'NotFound',
+        component: NotFound,
+    },
+];
+
 export default new VueRouter({
     scrollBehavior: () => ({y: 0}),
-    routes: [
-        {
-            path: '/',
-            redirect: '/index',
-            component: Base,
-            children: [
-                {
-                    path: 'index',
-                    name: 'index',
-                    component: Index,
-                },
-                {
-                    path: 'calculation',
-                    name: 'calculation',
-                    component: Calculation,
-                },
-                {
-                    path: 'ranking',
-                    name: 'ranking',
-                    component: Ranking,
-                },
-                {
-                    path: 'demo',
-                    name: 'demo',
-                    component: Demo,
-                },
-                {
-                    path: 'register',
-                    name: 'register',
-                    component: Register,
-                },
-            ],
-        }
-    ],
+    routes: routeList,
 });

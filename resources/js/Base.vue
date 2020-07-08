@@ -2,13 +2,9 @@
     <div class="app-body">
         <b-card-header class="text-center">ポケモン バトルデータ</b-card-header>
         <div class="container-fluid">
-            <b-card-group>
-                <b-card-body class="w-25">aaa</b-card-body>
-                <b-card-body class="w-75">
-                    <nav class="breadcrumb active"></nav>
-                    <router-view></router-view>
-                </b-card-body>
-            </b-card-group>
+            <b-card-body class="m-lg-2">
+                <router-view></router-view>
+            </b-card-body>
         </div>
         <b-card-footer class="text-center">
             © 2020 by <a href="https://twitter.com/game_Fara" target="_blank">@Fara</a>
@@ -17,14 +13,13 @@
 </template>
 
 <script>
-    import index from './router'
+    import index from './router/index';
 
     export default {
         name: 'base',
-        components: {},
         data() {
             return {
-                index: index.routes
+                index: index,
             }
         },
         computed: {
