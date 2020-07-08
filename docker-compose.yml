@@ -11,7 +11,7 @@ services:
 
   laravel:
     tty: true
-    image: docker.io/bitnami/laravel:7-debian-10
+    build: docker/workspace
     environment:
       - DB_HOST=mariadb
       - DB_USERNAME=${DB_USERNAME}

@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 1);
+/******/ 	return __webpack_require__(__webpack_require__.s = 0);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -46818,7 +46818,7 @@ var render = function() {
         { staticClass: "m-lg-2" },
         [
           _c("b-card", {
-            attrs: { title: "ステータス計算", "sub-title": "Calc Atatus" }
+            attrs: { title: "ステータス計算", "sub-title": "Calc Status" }
           })
         ],
         1
@@ -63315,12 +63315,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
- // Components
-// import Components from '@/components/';
-// Complete
-// import Complete from '@/views/complete/';
-// Calculation
-// import Calc from '@/views/calc/';
+ // import Components from '@/components';
+// import Complete from '@/views/complete';
+// import Calculation from '@/views/Calculation';
 
 
 vue__WEBPACK_IMPORTED_MODULE_0__["default"].use(vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]);
@@ -63338,11 +63335,12 @@ vue__WEBPACK_IMPORTED_MODULE_0__["default"].use(bootstrap_vue__WEBPACK_IMPORTED_
     children: [{
       path: 'index',
       name: 'index',
-      component: _views_Index__WEBPACK_IMPORTED_MODULE_6__["default"]
-    }, {
-      path: 'culc',
-      name: 'culc',
-      component: Culc
+      component: _views_Index__WEBPACK_IMPORTED_MODULE_6__["default"] // },
+      // {
+      //     path: 'calculation',
+      //     name: 'calculation',
+      //     component: Calculation,
+
     }]
   }]
 }));
@@ -63447,7 +63445,7 @@ new vue__WEBPACK_IMPORTED_MODULE_0__["default"]({
 
 /***/ }),
 
-/***/ 1:
+/***/ 0:
 /*!***********************************!*\
   !*** multi ./resources/js/vue.js ***!
   \***********************************/

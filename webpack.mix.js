@@ -11,8 +11,7 @@ let mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
-    .js('resources/js/vue.js', 'public/js');
+mix.js('resources/js/vue.js', 'public/js');
 
 // Full API
 // mix.js(src, output);

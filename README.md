@@ -6,6 +6,7 @@ docker-compose exec laravel bash
 
 # in laravel container
 
+php artisan key:generate
 
 
 <p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>

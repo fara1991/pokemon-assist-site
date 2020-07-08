@@ -6,16 +6,13 @@ import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-vue/dist/bootstrap-vue.css';
 
 import Base from '@/Base';
-// Components
-// import Components from '@/components/';
-
-// Complete
-// import Complete from '@/views/complete/';
-
-// Calculation
-// import Calc from '@/views/calc/';
 
 import Index from '@/views/Index';
+
+import Calculation from '@/views/Calculation';
+import Ranking from '@views/ranking';
+import Demo from '@/views/Demo';
+import Register from '@/views/register';
 
 Vue.use(VueRouter);
 Vue.use(BootstrapVue);
@@ -34,10 +31,25 @@ export default new VueRouter({
                     component: Index,
                 },
                 {
-                    path: 'culc',
-                    name: 'culc',
-                    component: Culc,
-                }
+                    path: 'calculation',
+                    name: 'calculation',
+                    component: Calculation,
+                },
+                {
+                    path: 'ranking',
+                    name: 'ranking',
+                    component: Ranking,
+                },
+                {
+                    path: 'demo',
+                    name: 'demo',
+                    component: Demo,
+                },
+                {
+                    path: 'register',
+                    name: 'register',
+                    component: Register,
+                },
             ],
         }
     ],

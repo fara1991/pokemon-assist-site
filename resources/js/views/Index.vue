@@ -1,7 +1,7 @@
 <template>
     <div class="animated fadeIn">
         <b-card-group class="m-lg-2">
-            <b-card title="ステータス計算" sub-title="Calc Atatus"></b-card>
+            <b-card title="ステータス計算" sub-title="Calc Status"></b-card>
         </b-card-group>
         <b-card-group class="m-lg-2">
             <b-card title="各種ステータスランキング(作成中)" sub-title="Ranking Status"></b-card>
