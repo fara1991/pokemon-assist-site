@@ -28,11 +28,12 @@ const routeList = [
             {
                 path: 'swsh',
                 redirect: '/swsh/index',
-                component: SwshIndex,
+                component: Base, //後々Swsh用の書き込みが必要なら別途ページを用意する
                 children: [
                     {
                         path: 'index',
                         name: 'index',
+                        component: SwshIndex,
                     },
                     {
                         path: 'calculation',

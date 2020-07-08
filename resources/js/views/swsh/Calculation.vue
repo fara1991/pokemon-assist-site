@@ -1,5 +1,7 @@
 <template>
-
+    <div>
+        Calculation
+    </div>
 </template>
 
 <script>

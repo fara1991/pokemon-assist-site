@@ -1,11 +1,10 @@
 <template>
     <div>
-        <b-card-group class="m-lg-2">
-            <b-card title="ステータス計算" sub-title="Calc Status">
+        <b-button block size="lg" variant="secondary" @click="goCalc()">ステータス計算</b-button>
+        <b-button block size="lg" variant="secondary" @click="goRanking()">各種ステータスランキング(作成中)</b-button>
+        <b-button block size="lg" variant="secondary" @click="goDemo()">戦闘デモ(作成中)</b-button>
+        <b-button block size="lg" variant="secondary" @click="goRegister()">PT登録(作成中)</b-button>
 
-                <b-button></b-button>
-            </b-card>
-        </b-card-group>
         <b-card-group class="m-lg-2">
             <b-card title="各種ステータスランキング(作成中)" sub-title="Ranking Status"></b-card>
         </b-card-group>
@@ -14,7 +13,6 @@
         </b-card-group>
         <b-card-group class="m-lg-2">
             <b-card title="PT登録(作成中)" sub-title="Regist Parties">
-                <b-button></b-button>
             </b-card>
         </b-card-group>
     </div>
@@ -22,6 +20,20 @@
 
 <script>
     export default {
-        name: 'swshIndex'
+        name: 'swshIndex',
+        methods: {
+            goCalc() {
+                this.$router.push("calculation");
+            },
+            goRanking() {
+                this.$router.push("ranking");
+            },
+            goDemo() {
+                this.$router.push("demo");
+            },
+            goRegister() {
+                this.$router.push("register");
+            },
+        }
     }
 </script>

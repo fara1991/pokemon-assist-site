@@ -100,16 +100,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'base',
@@ -137,6 +127,16 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports) {
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -174,6 +174,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
 //
 //
 //
@@ -232,10 +234,22 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'swshIndex'
+  name: 'swshIndex',
+  methods: {
+    goCalc: function goCalc() {
+      this.$router.push("calculation");
+    },
+    goRanking: function goRanking() {
+      this.$router.push("ranking");
+    },
+    goDemo: function goDemo() {
+      this.$router.push("demo");
+    },
+    goRegister: function goRegister() {
+      this.$router.push("register");
+    }
+  }
 });
 
 /***/ }),
@@ -46805,6 +46819,30 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
+  return _c("router-view")
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Main.vue?vue&type=template&id=01a582d7&":
+/*!********************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/Main.vue?vue&type=template&id=01a582d7& ***!
+  \********************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
   return _c(
     "div",
     { staticClass: "app-body" },
@@ -46833,30 +46871,6 @@ var render = function() {
     ],
     1
   )
-}
-var staticRenderFns = []
-render._withStripped = true
-
-
-
-/***/ }),
-
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Main.vue?vue&type=template&id=01a582d7&":
-/*!********************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/Main.vue?vue&type=template&id=01a582d7& ***!
-  \********************************************************************************************************************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("router-view")
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -46904,7 +46918,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div")
+  return _c("div", [_vm._v("\n    Calculation\n")])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -46956,17 +46970,55 @@ var render = function() {
     "div",
     [
       _c(
-        "b-card-group",
-        { staticClass: "m-lg-2" },
-        [
-          _c(
-            "b-card",
-            { attrs: { title: "ステータス計算", "sub-title": "Calc Status" } },
-            [_c("b-button")],
-            1
-          )
-        ],
-        1
+        "b-button",
+        {
+          attrs: { block: "", size: "lg", variant: "secondary" },
+          on: {
+            click: function($event) {
+              return _vm.goCalc()
+            }
+          }
+        },
+        [_vm._v("ステータス計算")]
+      ),
+      _vm._v(" "),
+      _c(
+        "b-button",
+        {
+          attrs: { block: "", size: "lg", variant: "secondary" },
+          on: {
+            click: function($event) {
+              return _vm.goRanking()
+            }
+          }
+        },
+        [_vm._v("各種ステータスランキング(作成中)")]
+      ),
+      _vm._v(" "),
+      _c(
+        "b-button",
+        {
+          attrs: { block: "", size: "lg", variant: "secondary" },
+          on: {
+            click: function($event) {
+              return _vm.goDemo()
+            }
+          }
+        },
+        [_vm._v("戦闘デモ(作成中)")]
+      ),
+      _vm._v(" "),
+      _c(
+        "b-button",
+        {
+          attrs: { block: "", size: "lg", variant: "secondary" },
+          on: {
+            click: function($event) {
+              return _vm.goRegister()
+            }
+          }
+        },
+        [_vm._v("PT登録(作成中)")]
       ),
       _vm._v(" "),
       _c(
@@ -46998,14 +47050,9 @@ var render = function() {
         "b-card-group",
         { staticClass: "m-lg-2" },
         [
-          _c(
-            "b-card",
-            {
-              attrs: { title: "PT登録(作成中)", "sub-title": "Regist Parties" }
-            },
-            [_c("b-button")],
-            1
-          )
+          _c("b-card", {
+            attrs: { title: "PT登録(作成中)", "sub-title": "Regist Parties" }
+          })
         ],
         1
       )
@@ -63534,10 +63581,12 @@ var routeList = [{
   children: [{
     path: 'swsh',
     redirect: '/swsh/index',
-    component: _views_swsh_Index__WEBPACK_IMPORTED_MODULE_6__["default"],
+    component: _Base__WEBPACK_IMPORTED_MODULE_5__["default"],
+    //後々Swsh用の書き込みが必要なら別途ページを用意する
     children: [{
       path: 'index',
-      name: 'index'
+      name: 'index',
+      component: _views_swsh_Index__WEBPACK_IMPORTED_MODULE_6__["default"]
     }, {
       path: 'calculation',
       name: 'calculation',
