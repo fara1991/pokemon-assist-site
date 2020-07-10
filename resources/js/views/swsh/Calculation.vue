@@ -5,8 +5,23 @@
 </template>
 
 <script>
+    import axios from 'axios';
     export default {
-        name: "Calculation"
+        name: "Calculation",
+        data() {
+           return {
+               bookList: [],
+           }
+        },
+        methods: {
+            loadBookList() {
+                axios.get('/').then(() => {
+
+                }).catch(() => {
+
+                });
+            },
+        },
     }
 </script>
 

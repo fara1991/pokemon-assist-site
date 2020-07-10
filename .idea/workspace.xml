@@ -20,13 +20,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="98a2cd19-c2be-48f0-a4cb-5191248d3ae6" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/database/masters/master_versions.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/pokemon-assist-site.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/pokemon-assist-site.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker/nginx/default.conf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker/php-fpm/Dockerfile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker/workspace/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/docker/workspace/Dockerfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/vue.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/vue.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/Base.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Base.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/Main.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Main.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/router/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/views/swsh/Calculation.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/views/swsh/Calculation.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/views/swsh/Index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/views/swsh/Index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,6 +47,9 @@
     <execution>
       <interpreter name="laravel" composer="composer" />
     </execution>
+  </component>
+  <component name="ExportToHTMLSettings">
+    <option name="OUTPUT_DIRECTORY" value="$PROJECT_DIR$/exportToHTML" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -159,6 +171,7 @@
       <path value="$PROJECT_DIR$/vendor/doctrine/lexer" />
       <path value="$PROJECT_DIR$/vendor/jakub-onderka/php-console-color" />
       <path value="$PROJECT_DIR$/vendor/jakub-onderka/php-console-highlighter" />
+      <path value="$PROJECT_DIR$/vendor/goodby/csv" />
     </include_path>
   </component>
   <component name="ProjectId" id="1dZgXwTcGiRzLZmPFMQRL3nsxaS" />
@@ -168,6 +181,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DBE.Init.BalloonShown" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -179,7 +193,7 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="settings.phing" />
+    <property name="settings.editor.selected.configurable" value="database.data.csv.formats" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -212,6 +226,10 @@
       <workItem from="1593269575834" duration="6813000" />
       <workItem from="1594186562738" duration="3131000" />
       <workItem from="1594194190084" duration="1464000" />
+      <workItem from="1594275276642" duration="1164000" />
+      <workItem from="1594276460052" duration="183000" />
+      <workItem from="1594276659532" duration="3404000" />
+      <workItem from="1594284161740" duration="34071000" />
     </task>
     <servers />
   </component>
@@ -239,25 +257,49 @@
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state x="719" y="392" width="463" height="350" key="#Docker/0.27.1920.1053@0.27.1920.1053" timestamp="1592642231867" />
+    <state x="418" y="211" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1594365113849">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state x="418" y="211" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.27.1920.1053@0.27.1920.1053" timestamp="1594365113849" />
+    <state x="693" y="301" width="524" height="511" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1594228586040">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state x="693" y="301" width="524" height="511" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.27.1920.1053@0.27.1920.1053" timestamp="1594228586040" />
     <state x="742" y="299" width="424" height="522" key="FileChooserDialogImpl" timestamp="1594192055213">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state x="742" y="299" width="424" height="522" key="FileChooserDialogImpl/0.27.1920.1053@0.27.1920.1053" timestamp="1594192055213" />
-    <state x="456" y="188" width="1007" height="737" key="SettingsEditor" timestamp="1592642388790">
+    <state x="456" y="188" width="1007" height="737" key="SettingsEditor" timestamp="1594283239788">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state x="456" y="188" width="1007" height="737" key="SettingsEditor/0.27.1920.1053@0.27.1920.1053" timestamp="1592642388790" />
-    <state x="488" y="218" width="934" height="677" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1594223806739">
+    <state x="456" y="188" width="1007" height="737" key="SettingsEditor/0.27.1920.1053@0.27.1920.1053" timestamp="1594283239788" />
+    <state x="488" y="218" width="934" height="677" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1594363801131">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state x="488" y="218" width="934" height="677" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.27.1920.1053@0.27.1920.1053" timestamp="1594223806739" />
-    <state x="656" y="129" width="607" height="849" key="find.popup" timestamp="1594190421849">
+    <state x="488" y="218" width="934" height="677" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.27.1920.1053@0.27.1920.1053" timestamp="1594363801131" />
+    <state x="656" y="129" width="648" height="849" key="find.popup" timestamp="1594338047662">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state x="656" y="129" width="607" height="849" key="find.popup/0.27.1920.1053@0.27.1920.1053" timestamp="1594190421849" />
+    <state x="656" y="129" width="648" height="849" key="find.popup/0.27.1920.1053@0.27.1920.1053" timestamp="1594338047662" />
     <state x="624" y="252" key="run.anything.popup" timestamp="1593279621134">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
     <state x="624" y="252" key="run.anything.popup/0.27.1920.1053@0.27.1920.1053" timestamp="1593279621134" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/database/seeds/MasterVersionsTableSeeder.php</url>
+          <line>16</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/app/Csv.php</url>
+          <line>15</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
