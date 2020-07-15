@@ -3,83 +3,57 @@
 namespace App\Http\Controllers;
 
 use App\BookList;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use RangeException;
 
 class BookListController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return JsonResponse
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
-    }
+        $request->validate([
+            'versionId' => 'required|integer',
+            'bookId' => 'required|integer',
+        ]);
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+        $model = new BookList();
+        $list =
+            $model->newQuery()
+                ->where('version_id', $request->versionId)
+                ->where('book_id', $request->bookId)
+                ->where('is_display', true)
+                ->select($model->camelColumnNameList(['id', 'book_no', 'pokemon_name']))
+                ->get();
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+        return response()->json($list);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\BookList  $bookList
-     * @return \Illuminate\Http\Response
+     * @param $bookNo
+     * @return JsonResponse
      */
-    public function show(BookList $bookList)
+    public function show($bookNo)
     {
-        //
-    }
+        if ($bookNo === 0) {
+            throw new RangeException('図鑑Noを指定していない');
+        }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\BookList  $bookList
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(BookList $bookList)
-    {
-        //
-    }
+        $model = new BookList();
+        $list = $model->newQuery()
+            ->where('version_id', 8)
+            ->where('book_id', 1)
+            ->where('book_no', $bookNo)
+            ->select($model->camelColumnNameList())
+            ->get();
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\BookList  $bookList
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, BookList $bookList)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\BookList  $bookList
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(BookList $bookList)
-    {
-        //
+        return response()->json($list);
     }
 }

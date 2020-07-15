@@ -1,12 +1,13 @@
 <template>
     <div>
-        このページは存在しません。
+        <b-card>このページは存在しません。</b-card>
+        <b-link href="/">TOP</b-link>
     </div>
 </template>
 
 <script>
     export default {
-        name: "NotFound"
+        name: "NotFound",
     }
 </script>
 

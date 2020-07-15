@@ -15,7 +15,7 @@ class CreateMasterVersionsTable extends Migration
     {
         Schema::create('master_versions', function (Blueprint $table) {
             $table->id()->autoIncrement()->comment('ID');
-            $table->integer('version_id')->unsigned()->comment('世代ID');
+            $table->unsignedInteger('version_id')->comment('世代ID');
             $table->string('name')->comment('タイトル名');
             $table->string('short_name')->comment('タイトル略称名');
         });

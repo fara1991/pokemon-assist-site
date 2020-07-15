@@ -18,7 +18,9 @@ class CreateMasterTypesTable extends Migration
             $table->integer('version_id')->unsigned()->comment('世代ID');
             $table->integer('type_id')->unsigned()->comment('タイプID');
             $table->string('name')->comment('タイプ名');
-//            $table->json('effective_types')->comment('相性一覧');
+            $table->json('weak_types')->comment('ばつぐん一覧');
+            $table->json('resist_types')->comment('いまひとつ一覧');
+            $table->json('invalid_types')->comment('こうかなし一覧');
         });
     }
 

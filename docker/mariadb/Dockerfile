@@ -1,4 +1,2 @@
-FROM docker.io/bitnami/mariadb:10.1-debian-10
-
-
+FROM docker.io/bitnami/mariadb:10.5-debian-10
 

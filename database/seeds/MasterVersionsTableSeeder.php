@@ -5,7 +5,7 @@ use App\Csv;
 
 class MasterVersionsTableSeeder extends Seeder
 {
-    protected $columnList;
+    private $tableName = 'master_versions';
 
     /**
      * Run the database seeds.
@@ -14,12 +14,7 @@ class MasterVersionsTableSeeder extends Seeder
      */
     public function run()
     {
-        $this->columnList = $this->getHead();
-        $csv = new Csv();
-        $csv->findCsvList('master_versions');
-    }
-
-    private function getHead() {
-        return ['id', 'version_id', 'name', 'short_name',];
+        $csv = new Csv($this->tableName);
+        $csv->csvMasterInsert();
     }
 }

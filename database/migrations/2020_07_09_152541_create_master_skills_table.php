@@ -15,13 +15,15 @@ class CreateMasterSkillsTable extends Migration
     {
         Schema::create('master_skills', function (Blueprint $table) {
             $table->id()->autoIncrement()->comment('ID');
-            $table->integer('version_id')->unsigned()->comment('世代ID');
-            $table->integer('skill_id')->unsigned()->comment('技ID');
-            $table->integer('type_id')->unsigned()->comment('タイプID');
-            $table->integer('power')->comment('威力');
-            $table->integer('power_point')->comment('PP');
-            $table->integer('hit_rate')->comment('命中率');
+            $table->unsignedInteger('version_id')->comment('世代ID');
+            $table->unsignedInteger('skill_id')->comment('技ID');
+            $table->string('name')->comment('技名');
+            $table->unsignedInteger('type_id')->comment('タイプID');
+            $table->string('power')->comment('威力');
+            $table->unsignedInteger('power_point')->comment('PP');
+            $table->string('hit_rate')->comment('命中率');
             $table->boolean('is_direct')->comment('接触技かどうか');
+            $table->integer('priority')->comment('優先度');
         });
     }
 
