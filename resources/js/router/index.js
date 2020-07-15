@@ -5,14 +5,12 @@ import BootstrapVue from 'bootstrap-vue';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-vue/dist/bootstrap-vue.css';
 
-import Base from '@/Base';
-
-// Sword&Shield
-import SwshIndex from '@/views/swsh/Index';
-import SwshCalculation from '@/views/swsh/Calculation';
-import SwshRanking from '@/views/swsh/Ranking';
-import SwshDemo from '@/views/swsh/Demo';
-import SwshRegister from '@/views/swsh/Register';
+import swshIndex from '@/views/swsh/index';
+import swshCalculationIndex from '@/views/swsh/calculation/index';
+import swshCalculationDetail from '@/views/swsh/calculation/detail';
+import swshRankingIndex from '@/views/swsh/ranking/index';
+import swshDemoIndex from '@/views/swsh/demo/index';
+import swshRegisterIndex from '@/views/swsh/register/index';
 
 import NotFound from '@/views/error/404';
 
@@ -21,39 +19,96 @@ Vue.use(BootstrapVue);
 
 const routeList = [
     {
-        path: '/',
+        path: '',
         redirect: '/swsh', // 最新世代にしておく
-        component: Base,
+        component: {
+            render(c) {
+                return c('router-view');
+            }
+        },
         children: [
             {
                 path: 'swsh',
                 redirect: '/swsh/index',
-                component: Base, //後々Swsh用の書き込みが必要なら別途ページを用意する
+                component: {
+                    render(c) {
+                        return c('router-view');
+                    }
+                },
                 children: [
                     {
                         path: 'index',
                         name: 'index',
-                        component: SwshIndex,
+                        component: swshIndex,
                     },
                     {
                         path: 'calculation',
                         name: 'calculation',
-                        component: SwshCalculation,
+                        component: {
+                            render(c) {
+                                return c('router-view');
+                            }
+                        },
+                        children: [
+                            {
+                                path: 'index',
+                                name: 'calculationIndex',
+                                component: swshCalculationIndex,
+                            },
+                            {
+                                path: 'detail',
+                                name: 'calculationDetail',
+                                component: swshCalculationDetail,
+                            }
+                        ]
                     },
                     {
                         path: 'ranking',
                         name: 'ranking',
-                        component: SwshRanking,
+                        component: {
+                            render(c) {
+                                return c('router-view');
+                            }
+                        },
+                        children: [
+                            {
+                                path: 'index',
+                                name: 'rankingIndex',
+                                component: swshRankingIndex,
+                            }
+                        ]
                     },
                     {
                         path: 'demo',
                         name: 'demo',
-                        component: SwshDemo,
+                        component: {
+                            render(c) {
+                                return c('router-view');
+                            }
+                        },
+                        children: [
+                            {
+                                path: 'index',
+                                name: 'demoIndex',
+                                component: swshDemoIndex,
+                            }
+                        ]
                     },
                     {
                         path: 'register',
                         name: 'register',
-                        component: SwshRegister,
+                        component: {
+                            render(c) {
+                                return c('router-view');
+                            }
+                        },
+                        children: [
+                            {
+                                path: 'index',
+                                name: 'registerIndex',
+                                component: swshRegisterIndex,
+                            },
+                        ],
                     },
                 ],
             },

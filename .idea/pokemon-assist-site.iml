@@ -5,6 +5,9 @@
       <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="true" packagePrefix="Tests\" />
       <sourceFolder url="file://$MODULE_DIR$/app" isTestSource="false" packagePrefix="App\" />
       <sourceFolder url="file://$MODULE_DIR$/spec" isTestSource="true" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/davejamesmiller/laravel-breadcrumbs" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/goodby/csv" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/hirak/prestissimo" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

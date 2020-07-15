@@ -2,14 +2,17 @@ version: '2'
 
 services:
   mariadb:
-    image: 'docker.io/bitnami/mariadb:10.1-debian-10'
+    build: docker/mariadb
     environment:
       - ALLOW_EMPTY_PASSWORD=yes
       - MARIADB_USER=${DB_USERNAME}
       - MARIADB_DATABASE=${DB_DATABASE}
       - MARIADB_PASSWORD=${DB_PASSWORD}
+      - TZ=Asia/Tokyo
+    volumes:
+      - ./docker/mariadb/my.cnf:/etc/mysql/conf.d/my.cnf
 
-  laravel:
+  workspace:
     tty: true
     build: docker/workspace
     environment:
@@ -17,10 +20,12 @@ services:
       - DB_USERNAME=${DB_USERNAME}
       - DB_DATABASE=${DB_DATABASE}
       - DB_PASSWORD=${DB_PASSWORD}
+      - TZ=Asia/Tokyo
     depends_on:
       - mariadb
     ports:
       - 3000:3000
     volumes:
       - ./:/app
+      - ./docker/workspace/php.ini:/opt/bitnami/php/conf/php.ini
     # privileged: true # Privileged mode could be required to run this container under Windows

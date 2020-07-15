@@ -97,12 +97,19 @@
       <path value="$PROJECT_DIR$/vendor/doctrine/lexer" />
       <path value="$PROJECT_DIR$/vendor/jakub-onderka/php-console-color" />
       <path value="$PROJECT_DIR$/vendor/jakub-onderka/php-console-highlighter" />
+      <path value="$PROJECT_DIR$/vendor/goodby/csv" />
+      <path value="$PROJECT_DIR$/vendor/hirak/prestissimo" />
+      <path value="$PROJECT_DIR$/vendor/davejamesmiller/laravel-breadcrumbs" />
     </include_path>
   </component>
-  <component name="PhpProjectSharedConfiguration" php_language_level="7.2" />
-  <component name="PhpUnit">
-    <phpunit_settings>
-      <PhpUnitSettings load_method="PHPUNIT_PHAR" configuration_file_path="$PROJECT_DIR$/phpunit.xml" custom_loader_path="$PROJECT_DIR$/vendor/autoload.php" phpunit_phar_path="" use_configuration_file="true" />
-    </phpunit_settings>
+  <component name="PhpProjectServersManager">
+    <servers>
+      <server host="192.168.33.10" id="0e6c9639-9d31-4823-9441-a8b60d7b9c54" name="localhost" port="3000" use_path_mappings="true">
+        <path_mappings>
+          <mapping local-root="$PROJECT_DIR$" remote-root="/app" />
+        </path_mappings>
+      </server>
+    </servers>
   </component>
+  <component name="PhpProjectSharedConfiguration" php_language_level="7.3" />
 </project>
