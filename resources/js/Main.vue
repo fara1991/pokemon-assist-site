@@ -5,6 +5,7 @@
         </b-card-header>
         <div class="container-fluid">
             <b-card-body class="m-lg-2">
+                <Breadcrumbs v-if=""></Breadcrumbs>
                 <router-view></router-view>
             </b-card-body>
         </div>
