@@ -1,8 +1,5 @@
 <template>
     <div v-if="this.finishLoad">
-        <b-list-group>
-            <b-link @click="back()">aaa</b-link>
-        </b-list-group>
         <b-container fluid="">
             <b-input v-model="keyword" placeholder="図鑑IDかポケモン名で検索"></b-input>
             <b-row v-for="bookRow in this.filteredList" :key="bookRow.id">
@@ -44,9 +41,6 @@
             go(bookNo) {
                 this.$router.push({name: 'calculationDetail', query: {book_no: bookNo}});
             },
-            back() {
-                this.$router.back();
-            },
         },
         created() {
             this.loadBookList();
@@ -60,8 +54,7 @@
 
                 this.bookList.forEach(book => {
                     let properties = ['bookNo', 'pokemonName'];
-                    for (let i of properties) {
-                        let propertyName = properties[i];
+                    for (let propertyName of properties) {
                         // 部分一致のものだけ検索結果に追加
                         if (String(book[propertyName]).indexOf(this.keyword) === this.invalidId) {
                             continue;
