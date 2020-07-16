@@ -16,7 +16,6 @@ php artisan make:controller (コントローラ名) --resource --model=(モデ�
 ### axios process list
 
 method => uri
-
 index() => axios.get('/(モデル名)')
 create() => axios.get('/(モデル名)/create')
 store() => axios.post('/(モデル名)')

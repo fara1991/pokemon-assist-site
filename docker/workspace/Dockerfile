@@ -8,4 +8,3 @@ RUN sudo apt-get update -y && \
 
 # Composer install
 COPY --from=composer:1.10.8 /usr/bin/composer /usr/bin/composer
-
