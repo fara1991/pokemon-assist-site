@@ -15,4 +15,5 @@ use Illuminate\Support\Facades\Route;
 
 Route::resources([
     'book-list' => 'BookListController',
+    'personality-list' => 'PersonalityListController',
 ]);

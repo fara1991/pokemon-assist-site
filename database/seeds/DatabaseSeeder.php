@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
             MasterBooksTableSeeder::class,
             MasterTypesTableSeeder::class,
             MasterSkillsTableSeeder::class,
+            MasterPersonalitiesTableSeeder::class,
         ]);
     }
 }
