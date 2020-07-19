@@ -15,8 +15,8 @@ class CreateMasterTypesTable extends Migration
     {
         Schema::create('master_types', function (Blueprint $table) {
             $table->id()->autoIncrement()->comment('ID');
-            $table->integer('version_id')->unsigned()->comment('世代ID');
-            $table->integer('type_id')->unsigned()->comment('タイプID');
+            $table->unsignedInteger('version_id')->comment('世代ID');
+            $table->unsignedInteger('type_id')->comment('タイプID');
             $table->string('name')->comment('タイプ名');
             $table->json('weak_types')->comment('ばつぐん一覧');
             $table->json('resist_types')->comment('いまひとつ一覧');

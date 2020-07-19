@@ -23,13 +23,13 @@ class BookListController extends Controller
         ]);
 
         $model = new BookList();
-        $list =
-            $model->newQuery()
-                ->where('version_id', $request->versionId)
-                ->where('book_id', $request->bookId)
-                ->where('is_display', true)
-                ->select($model->camelColumnNameList(['id', 'book_no', 'pokemon_name']))
-                ->get();
+        $list = $model
+            ->newQuery()
+            ->where('version_id', $request->versionId)
+            ->where('book_id', $request->bookId)
+            ->where('is_display', true)
+            ->select($model->camelColumnNameList(['id', 'book_no', 'pokemon_name']))
+            ->get();
 
         return response()->json($list);
     }
