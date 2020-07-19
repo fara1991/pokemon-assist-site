@@ -1,20 +1,27 @@
 ## SetUp
 
+```
 cp .env.example .env
 docker-compose up -d --build
 docker-compose exec laravel bash
+```
 
 ## in laravel container
 
+```
 php artisan key:generate
+```
 
 ### create api
 
+```
 php artisan make:migration (ファイル名) --create=(テーブル名)
 php artisan make:controller (コントローラ名) --resource --model=(モデル名)
+```
 
 ### axios process list
 
+```
 method => uri
 index() => axios.get('/(モデル名)')
 create() => axios.get('/(モデル名)/create')
@@ -23,13 +30,15 @@ show('(パラメータ)') => axios.get('/(モデル名)/(パラメータ)')
 edit('(パラメータ)') => axios.get('/(モデル名)/(パラメータ)/edit')
 update('(パラメータ)') => axios.put('(モデル名)/(パラメータ)')
 delete('(パラメータ)') => axios.delete('(モデル名)/(パラメータ)')
-
+```
 
 ## Database
 
+```
 マスタデータの登録 => Laravel Seeder
 テストデータの登録 => Laravel Factories
 ユーザデータテーブル作成 => Laravel Migration
+```
 
 # Laravel 公式Document
 
