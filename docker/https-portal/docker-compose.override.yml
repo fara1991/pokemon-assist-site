@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+    https-portal:
+        image: steveltn/https-portal:1
+        ports:
+            - '80:80'
+            - '443:443'
+        links:
+            - workspace:workspace
+        environment:
+            DOMAINS: 'example321.com -> http://workspace:3000'
+            STAGE: 'local'
+            #STAGE: 'staging'
+            #STAGE: 'production'
+            WEBSOCKET: 'true'
+            CLIENT_MAX_BODY_SIZE: 0
+        restart: unless-stopped
+        volumes:
+            - https-portal_data:/var/lib/https-portal
+
+volumes:
+    https-portal_data:
