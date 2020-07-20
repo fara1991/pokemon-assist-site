@@ -7,5 +7,5 @@ docker-compose exec -T workspace bash -c '
     php artisan migrate:rollback &&
     php artisan migrate &&
     php artisan db:seed &&
-    npm run prod
+    npm run dev
 '
