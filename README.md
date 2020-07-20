@@ -2,12 +2,10 @@
 
 ```
 cp .env.example .env
-chmod 777 storate
-mkdir vendor
-chmod 777 vendor
-chmod 777 bootstrap/cache
+chmod 777 -R storate
+chmod 777 -R bootstrap/cache
 docker-compose up -d --build
-docker-compose exec laravel bash
+docker-compose exec workspace bash
 ```
 
 ## in laravel container
