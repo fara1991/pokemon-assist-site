@@ -1,7 +1,10 @@
 <template>
-    <div v-if="this.finishLoad">
+    <div v-if="!this.finishLoad">
+        <b-spinner variant="primary"></b-spinner>
+    </div>
+    <div v-else>
         <b-container fluid="">
-            <b-input v-model="keyword" placeholder="図鑑IDかポケモン名で検索"></b-input>
+            <b-input v-model="keyword" placeholder="図鑑IDかポケモン名で検索" class="mb-4"></b-input>
             <b-row v-for="bookRow in this.filteredList" :key="bookRow.id">
                 <b-col v-for="book in bookRow" :key="book.filterId">
                     <b-link v-if="book.id !== undefined" @click="go(book.bookNo)">No.{{book.bookNo}} {{book.pokemonName}}</b-link>

@@ -2,9 +2,11 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import BootstrapVue from 'bootstrap-vue';
 import VueBreadcrumbs from 'vue-2-breadcrumbs';
+import PerfectScrollbar from "vue2-perfect-scrollbar";
 
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-vue/dist/bootstrap-vue.css';
+import 'vue2-perfect-scrollbar/dist/vue2-perfect-scrollbar.css';
 
 import swshIndex from '@/views/swsh/index';
 import swshCalculationIndex from '@/views/swsh/calculation/index';
@@ -18,6 +20,7 @@ import notFound from '@/views/error/notFound';
 Vue.use(VueRouter);
 Vue.use(BootstrapVue);
 Vue.use(VueBreadcrumbs);
+Vue.use(PerfectScrollbar);
 
 const routeList = [
     {

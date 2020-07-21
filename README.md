@@ -2,10 +2,17 @@
 
 ```
 cp .env.example .env
-chmod 777 -R storate
+chmod 777 -R storage
 chmod 777 -R bootstrap/cache
 docker-compose up -d --build
 docker-compose exec workspace bash
+```
+
+## npm error resolve
+
+```
+nslookup registry.npmjs.org
+sudo vim /etc/hosts
 ```
 
 ## in laravel container

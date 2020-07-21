@@ -5,8 +5,12 @@
         </b-card-header>
         <div class="container-fluid">
             <b-card-body class="m-lg-2">
-                <Breadcrumbs v-if=""></Breadcrumbs>
-                <router-view></router-view>
+                <Breadcrumbs></Breadcrumbs>
+                <perfect-scrollbar>
+                    <p>
+                        <router-view></router-view>
+                    </p>
+                </perfect-scrollbar>
             </b-card-body>
         </div>
         <b-card-footer class="text-center">
@@ -15,6 +19,23 @@
     </div>
 </template>
 
-<script></script>
+<script>
+    export default {
+        name: 'Main',
+    }
+</script>
 
-<style></style>
+<style>
+    /*#ps {*/
+    /*    font-family: 'Avenir', Helvetica, Arial, sans-serif;*/
+    /*    -webkit-font-smoothing: antialiased;*/
+    /*    -moz-osx-font-smoothing: grayscale;*/
+    /*    text-align: center;*/
+    /*    color: #2c3e50;*/
+    /*    margin-top: 60px;*/
+    /*}*/
+    .ps{
+        position: relative;
+        height: 700px;
+    }
+</style>

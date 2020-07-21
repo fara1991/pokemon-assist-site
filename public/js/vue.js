@@ -1915,9 +1915,11 @@ module.exports = {
 /*!****************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/Main.vue?vue&type=script&lang=js& ***!
   \****************************************************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
+__webpack_require__.r(__webpack_exports__);
 //
 //
 //
@@ -1935,6 +1937,13 @@ module.exports = {
 //
 //
 //
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'Main'
+});
 
 /***/ }),
 
@@ -2334,6 +2343,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+//
+//
+//
 //
 //
 //
@@ -44715,6 +44727,44 @@ exports.push([module.i, "/*!\n * Bootstrap v4.5.0 (https://getbootstrap.com/)\n 
 
 /***/ }),
 
+/***/ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/vue2-perfect-scrollbar/dist/vue2-perfect-scrollbar.css":
+/*!*************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--5-1!./node_modules/postcss-loader/src??ref--5-2!./node_modules/vue2-perfect-scrollbar/dist/vue2-perfect-scrollbar.css ***!
+  \*************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "/*\n * Container style\n */\n.ps {\n  overflow: hidden !important;\n  overflow-anchor: none;\n  -ms-overflow-style: none;\n  touch-action: auto;\n  -ms-touch-action: auto;\n}\n/*\n * Scrollbar rail styles\n */\n.ps__rail-x {\n  display: none;\n  opacity: 0;\n  transition: background-color .2s linear, opacity .2s linear;\n  -webkit-transition: background-color .2s linear, opacity .2s linear;\n  height: 15px;\n  /* there must be 'bottom' or 'top' for ps__rail-x */\n  bottom: 0px;\n  /* please don't change 'position' */\n  position: absolute;\n}\n.ps__rail-y {\n  display: none;\n  opacity: 0;\n  transition: background-color .2s linear, opacity .2s linear;\n  -webkit-transition: background-color .2s linear, opacity .2s linear;\n  width: 15px;\n  /* there must be 'right' or 'left' for ps__rail-y */\n  right: 0;\n  /* please don't change 'position' */\n  position: absolute;\n}\n.ps--active-x > .ps__rail-x,\n.ps--active-y > .ps__rail-y {\n  display: block;\n  background-color: transparent;\n}\n.ps:hover > .ps__rail-x,\n.ps:hover > .ps__rail-y,\n.ps--focus > .ps__rail-x,\n.ps--focus > .ps__rail-y,\n.ps--scrolling-x > .ps__rail-x,\n.ps--scrolling-y > .ps__rail-y {\n  opacity: 0.6;\n}\n.ps .ps__rail-x:hover,\n.ps .ps__rail-y:hover,\n.ps .ps__rail-x:focus,\n.ps .ps__rail-y:focus,\n.ps .ps__rail-x.ps--clicking,\n.ps .ps__rail-y.ps--clicking {\n  background-color: #eee;\n  opacity: 0.9;\n}\n/*\n * Scrollbar thumb styles\n */\n.ps__thumb-x {\n  background-color: #aaa;\n  border-radius: 6px;\n  transition: background-color .2s linear, height .2s ease-in-out;\n  -webkit-transition: background-color .2s linear, height .2s ease-in-out;\n  height: 6px;\n  /* there must be 'bottom' for ps__thumb-x */\n  bottom: 2px;\n  /* please don't change 'position' */\n  position: absolute;\n}\n.ps__thumb-y {\n  background-color: #aaa;\n  border-radius: 6px;\n  transition: background-color .2s linear, width .2s ease-in-out;\n  -webkit-transition: background-color .2s linear, width .2s ease-in-out;\n  width: 6px;\n  /* there must be 'right' for ps__thumb-y */\n  right: 2px;\n  /* please don't change 'position' */\n  position: absolute;\n}\n.ps__rail-x:hover > .ps__thumb-x,\n.ps__rail-x:focus > .ps__thumb-x,\n.ps__rail-x.ps--clicking .ps__thumb-x {\n  background-color: #999;\n  height: 11px;\n}\n.ps__rail-y:hover > .ps__thumb-y,\n.ps__rail-y:focus > .ps__thumb-y,\n.ps__rail-y.ps--clicking .ps__thumb-y {\n  background-color: #999;\n  width: 11px;\n}\n/* MS supports */\n@supports (-ms-overflow-style: none) {\n  .ps {\n    overflow: auto !important;\n  }\n}\n@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {\n  .ps {\n    overflow: auto !important;\n  }\n}\n.ps {\n    position: relative;\n}", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Main.vue?vue&type=style&index=0&lang=css&":
+/*!***********************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--5-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--5-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/Main.vue?vue&type=style&index=0&lang=css& ***!
+  \***********************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/*#ps {*/\n/*    font-family: 'Avenir', Helvetica, Arial, sans-serif;*/\n/*    -webkit-font-smoothing: antialiased;*/\n/*    -moz-osx-font-smoothing: grayscale;*/\n/*    text-align: center;*/\n/*    color: #2c3e50;*/\n/*    margin-top: 60px;*/\n/*}*/\n.ps{\n    position: relative;\n    height: 700px;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/lib/css-base.js":
 /*!*************************************************!*\
   !*** ./node_modules/css-loader/lib/css-base.js ***!
@@ -49193,6 +49243,36 @@ try {
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Main.vue?vue&type=style&index=0&lang=css&":
+/*!***************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--5-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--5-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/Main.vue?vue&type=style&index=0&lang=css& ***!
+  \***************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../node_modules/css-loader??ref--5-1!../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../node_modules/postcss-loader/src??ref--5-2!../../node_modules/vue-loader/lib??vue-loader-options!./Main.vue?vue&type=style&index=0&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Main.vue?vue&type=style&index=0&lang=css&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/lib/addStyles.js":
 /*!****************************************************!*\
   !*** ./node_modules/style-loader/lib/addStyles.js ***!
@@ -49975,7 +50055,11 @@ var render = function() {
           _c(
             "b-card-body",
             { staticClass: "m-lg-2" },
-            [_c("Breadcrumbs"), _vm._v(" "), _c("router-view")],
+            [
+              _c("Breadcrumbs"),
+              _vm._v(" "),
+              _c("perfect-scrollbar", [_c("p", [_c("router-view")], 1)])
+            ],
             1
           )
         ],
@@ -50129,7 +50213,7 @@ var render = function() {
           _vm._v(" "),
           _c(
             "b-card-group",
-            { staticClass: "m-lg-1 text-center" },
+            { staticClass: "m-lg-0 text-center" },
             [
               _c("b-card", [
                 _vm._v(
@@ -50142,7 +50226,7 @@ var render = function() {
           _vm._v(" "),
           _c(
             "b-card-group",
-            { staticClass: "m-lg-1" },
+            { staticClass: "m-lg-0" },
             [
               _c(
                 "b-card",
@@ -50160,9 +50244,9 @@ var render = function() {
                       [
                         _c(
                           "b-input-group",
-                          { staticClass: "mb-xl-1" },
+                          { staticClass: "mb-xl-0" },
                           [
-                            _c("b-form", { staticClass: "mb-xl-2" }, [
+                            _c("b-form", { staticClass: "mb-xl-1" }, [
                               _vm._v(_vm._s(bv.name) + " " + _vm._s(bv.value))
                             ])
                           ],
@@ -50170,7 +50254,7 @@ var render = function() {
                         ),
                         _vm._v(" "),
                         _c("b-progress", {
-                          staticClass: "mb-lg-2",
+                          staticClass: "mb-lg-1",
                           attrs: {
                             value: bv.value,
                             max: 255,
@@ -50216,7 +50300,7 @@ var render = function() {
                         _c(
                           "b-input-group",
                           [
-                            _c("b-form", { staticClass: "m-lg-1" }, [
+                            _c("b-form", { staticClass: "m-lg-0" }, [
                               _vm._v(_vm._s(iv.name))
                             ]),
                             _vm._v(" "),
@@ -50297,7 +50381,7 @@ var render = function() {
                         _c(
                           "b-input-group",
                           [
-                            _c("b-form", { staticClass: "m-lg-1" }, [
+                            _c("b-form", { staticClass: "m-lg-0" }, [
                               _vm._v(_vm._s(ev.name))
                             ]),
                             _vm._v(" "),
@@ -50371,10 +50455,10 @@ var render = function() {
                       }
                     },
                     [
-                      _c("b-form", { staticClass: "m-lg-1" }, [_vm._v("Lv:")]),
+                      _c("b-form", { staticClass: "m-lg-0" }, [_vm._v("Lv:")]),
                       _vm._v(" "),
                       _c("b-form-input", {
-                        staticClass: "col-3",
+                        staticClass: "col-2",
                         attrs: {
                           size: "sm",
                           type: "number",
@@ -50433,7 +50517,7 @@ var render = function() {
                   _vm._v(" "),
                   _c(
                     "b-card-text",
-                    { staticClass: "text-center font-weight-bolder mt-4" },
+                    { staticClass: "text-center font-weight-bolder mt-2" },
                     [_vm._v("性格(↑: 1.1倍, ↓: 0.9倍)")]
                   ),
                   _vm._v(" "),
@@ -50459,7 +50543,7 @@ var render = function() {
                   ),
                   _vm._v(" "),
                   _vm.personalityList.length !== 0
-                    ? _c("b-card-text", { staticClass: "mt-3" }, [
+                    ? _c("b-card-text", { staticClass: "mt-2" }, [
                         _vm._v("性格: " + _vm._s(_vm.selectedPersonal().text))
                       ])
                     : _vm._e()
@@ -50472,7 +50556,7 @@ var render = function() {
           _vm._v(" "),
           _c(
             "b-card-group",
-            { staticClass: "m-lg-1" },
+            { staticClass: "m-lg-0" },
             [
               _c(
                 "b-card",
@@ -50539,8 +50623,9 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return this.finishLoad
-    ? _c(
+  return !this.finishLoad
+    ? _c("div", [_c("b-spinner", { attrs: { variant: "primary" } })], 1)
+    : _c(
         "div",
         [
           _c(
@@ -50548,6 +50633,7 @@ var render = function() {
             { attrs: { fluid: "" } },
             [
               _c("b-input", {
+                staticClass: "mb-4",
                 attrs: { placeholder: "図鑑IDかポケモン名で検索" },
                 model: {
                   value: _vm.keyword,
@@ -50600,7 +50686,6 @@ var render = function() {
         ],
         1
       )
-    : _vm._e()
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -50650,11 +50735,12 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
+    { staticClass: "text-center" },
     [
       _c(
         "b-button",
         {
-          attrs: { block: "", size: "lg", variant: "secondary" },
+          attrs: { size: "lg", variant: "info" },
           on: {
             click: function($event) {
               return _vm.goCalc()
@@ -50667,7 +50753,7 @@ var render = function() {
       _c(
         "b-button",
         {
-          attrs: { block: "", size: "lg", variant: "secondary" },
+          attrs: { size: "lg", variant: "info", disabled: "" },
           on: {
             click: function($event) {
               return _vm.goRanking()
@@ -50680,7 +50766,7 @@ var render = function() {
       _c(
         "b-button",
         {
-          attrs: { block: "", size: "lg", variant: "secondary" },
+          attrs: { size: "lg", variant: "info", disabled: "" },
           on: {
             click: function($event) {
               return _vm.goDemo()
@@ -50693,7 +50779,7 @@ var render = function() {
       _c(
         "b-button",
         {
-          attrs: { block: "", size: "lg", variant: "secondary" },
+          attrs: { size: "lg", variant: "info", disabled: "" },
           on: {
             click: function($event) {
               return _vm.goRegister()
@@ -65896,6 +65982,1518 @@ Vue.compile = compileToFunctions;
 
 /***/ }),
 
+/***/ "./node_modules/vue2-perfect-scrollbar/dist/vue2-perfect-scrollbar.css":
+/*!*****************************************************************************!*\
+  !*** ./node_modules/vue2-perfect-scrollbar/dist/vue2-perfect-scrollbar.css ***!
+  \*****************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../css-loader??ref--5-1!../../postcss-loader/src??ref--5-2!./vue2-perfect-scrollbar.css */ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/vue2-perfect-scrollbar/dist/vue2-perfect-scrollbar.css");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./node_modules/vue2-perfect-scrollbar/dist/vue2-perfect-scrollbar.umd.js":
+/*!********************************************************************************!*\
+  !*** ./node_modules/vue2-perfect-scrollbar/dist/vue2-perfect-scrollbar.umd.js ***!
+  \********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+(function (global, factory) {
+   true ? factory(exports) :
+  undefined;
+}(this, (function (exports) { 'use strict';
+
+  /*!
+   * perfect-scrollbar v1.5.0
+   * Copyright 2020 Hyunje Jun, MDBootstrap and Contributors
+   * Licensed under MIT
+   */
+
+  function get(element) {
+    return getComputedStyle(element);
+  }
+
+  function set(element, obj) {
+    for (var key in obj) {
+      var val = obj[key];
+      if (typeof val === 'number') {
+        val = val + "px";
+      }
+      element.style[key] = val;
+    }
+    return element;
+  }
+
+  function div(className) {
+    var div = document.createElement('div');
+    div.className = className;
+    return div;
+  }
+
+  var elMatches =
+    typeof Element !== 'undefined' &&
+    (Element.prototype.matches ||
+      Element.prototype.webkitMatchesSelector ||
+      Element.prototype.mozMatchesSelector ||
+      Element.prototype.msMatchesSelector);
+
+  function matches(element, query) {
+    if (!elMatches) {
+      throw new Error('No element matching method supported');
+    }
+
+    return elMatches.call(element, query);
+  }
+
+  function remove(element) {
+    if (element.remove) {
+      element.remove();
+    } else {
+      if (element.parentNode) {
+        element.parentNode.removeChild(element);
+      }
+    }
+  }
+
+  function queryChildren(element, selector) {
+    return Array.prototype.filter.call(element.children, function (child) { return matches(child, selector); }
+    );
+  }
+
+  var cls = {
+    main: 'ps',
+    rtl: 'ps__rtl',
+    element: {
+      thumb: function (x) { return ("ps__thumb-" + x); },
+      rail: function (x) { return ("ps__rail-" + x); },
+      consuming: 'ps__child--consume',
+    },
+    state: {
+      focus: 'ps--focus',
+      clicking: 'ps--clicking',
+      active: function (x) { return ("ps--active-" + x); },
+      scrolling: function (x) { return ("ps--scrolling-" + x); },
+    },
+  };
+
+  /*
+   * Helper methods
+   */
+  var scrollingClassTimeout = { x: null, y: null };
+
+  function addScrollingClass(i, x) {
+    var classList = i.element.classList;
+    var className = cls.state.scrolling(x);
+
+    if (classList.contains(className)) {
+      clearTimeout(scrollingClassTimeout[x]);
+    } else {
+      classList.add(className);
+    }
+  }
+
+  function removeScrollingClass(i, x) {
+    scrollingClassTimeout[x] = setTimeout(
+      function () { return i.isAlive && i.element.classList.remove(cls.state.scrolling(x)); },
+      i.settings.scrollingThreshold
+    );
+  }
+
+  function setScrollingClassInstantly(i, x) {
+    addScrollingClass(i, x);
+    removeScrollingClass(i, x);
+  }
+
+  var EventElement = function EventElement(element) {
+    this.element = element;
+    this.handlers = {};
+  };
+
+  var prototypeAccessors = { isEmpty: { configurable: true } };
+
+  EventElement.prototype.bind = function bind (eventName, handler) {
+    if (typeof this.handlers[eventName] === 'undefined') {
+      this.handlers[eventName] = [];
+    }
+    this.handlers[eventName].push(handler);
+    this.element.addEventListener(eventName, handler, false);
+  };
+
+  EventElement.prototype.unbind = function unbind (eventName, target) {
+      var this$1 = this;
+
+    this.handlers[eventName] = this.handlers[eventName].filter(function (handler) {
+      if (target && handler !== target) {
+        return true;
+      }
+      this$1.element.removeEventListener(eventName, handler, false);
+      return false;
+    });
+  };
+
+  EventElement.prototype.unbindAll = function unbindAll () {
+    var this$1 = this;
+
+    for (var name in this$1.handlers) {
+      this$1.unbind(name);
+    }
+  };
+
+  prototypeAccessors.isEmpty.get = function () {
+      var this$1 = this;
+
+    return Object.keys(this.handlers).every(
+      function (key) { return this$1.handlers[key].length === 0; }
+    );
+  };
+
+  Object.defineProperties( EventElement.prototype, prototypeAccessors );
+
+  var EventManager = function EventManager() {
+    this.eventElements = [];
+  };
+
+  EventManager.prototype.eventElement = function eventElement (element) {
+    var ee = this.eventElements.filter(function (ee) { return ee.element === element; })[0];
+    if (!ee) {
+      ee = new EventElement(element);
+      this.eventElements.push(ee);
+    }
+    return ee;
+  };
+
+  EventManager.prototype.bind = function bind (element, eventName, handler) {
+    this.eventElement(element).bind(eventName, handler);
+  };
+
+  EventManager.prototype.unbind = function unbind (element, eventName, handler) {
+    var ee = this.eventElement(element);
+    ee.unbind(eventName, handler);
+
+    if (ee.isEmpty) {
+      // remove
+      this.eventElements.splice(this.eventElements.indexOf(ee), 1);
+    }
+  };
+
+  EventManager.prototype.unbindAll = function unbindAll () {
+    this.eventElements.forEach(function (e) { return e.unbindAll(); });
+    this.eventElements = [];
+  };
+
+  EventManager.prototype.once = function once (element, eventName, handler) {
+    var ee = this.eventElement(element);
+    var onceHandler = function (evt) {
+      ee.unbind(eventName, onceHandler);
+      handler(evt);
+    };
+    ee.bind(eventName, onceHandler);
+  };
+
+  function createEvent(name) {
+    if (typeof window.CustomEvent === 'function') {
+      return new CustomEvent(name);
+    } else {
+      var evt = document.createEvent('CustomEvent');
+      evt.initCustomEvent(name, false, false, undefined);
+      return evt;
+    }
+  }
+
+  function processScrollDiff(
+    i,
+    axis,
+    diff,
+    useScrollingClass,
+    forceFireReachEvent
+  ) {
+    if ( useScrollingClass === void 0 ) { useScrollingClass = true; }
+    if ( forceFireReachEvent === void 0 ) { forceFireReachEvent = false; }
+
+    var fields;
+    if (axis === 'top') {
+      fields = [
+        'contentHeight',
+        'containerHeight',
+        'scrollTop',
+        'y',
+        'up',
+        'down' ];
+    } else if (axis === 'left') {
+      fields = [
+        'contentWidth',
+        'containerWidth',
+        'scrollLeft',
+        'x',
+        'left',
+        'right' ];
+    } else {
+      throw new Error('A proper axis should be provided');
+    }
+
+    processScrollDiff$1(i, diff, fields, useScrollingClass, forceFireReachEvent);
+  }
+
+  function processScrollDiff$1(
+    i,
+    diff,
+    ref,
+    useScrollingClass,
+    forceFireReachEvent
+  ) {
+    var contentHeight = ref[0];
+    var containerHeight = ref[1];
+    var scrollTop = ref[2];
+    var y = ref[3];
+    var up = ref[4];
+    var down = ref[5];
+    if ( useScrollingClass === void 0 ) { useScrollingClass = true; }
+    if ( forceFireReachEvent === void 0 ) { forceFireReachEvent = false; }
+
+    var element = i.element;
+
+    // reset reach
+    i.reach[y] = null;
+
+    // 1 for subpixel rounding
+    if (element[scrollTop] < 1) {
+      i.reach[y] = 'start';
+    }
+
+    // 1 for subpixel rounding
+    if (element[scrollTop] > i[contentHeight] - i[containerHeight] - 1) {
+      i.reach[y] = 'end';
+    }
+
+    if (diff) {
+      element.dispatchEvent(createEvent(("ps-scroll-" + y)));
+
+      if (diff < 0) {
+        element.dispatchEvent(createEvent(("ps-scroll-" + up)));
+      } else if (diff > 0) {
+        element.dispatchEvent(createEvent(("ps-scroll-" + down)));
+      }
+
+      if (useScrollingClass) {
+        setScrollingClassInstantly(i, y);
+      }
+    }
+
+    if (i.reach[y] && (diff || forceFireReachEvent)) {
+      element.dispatchEvent(createEvent(("ps-" + y + "-reach-" + (i.reach[y]))));
+    }
+  }
+
+  function toInt(x) {
+    return parseInt(x, 10) || 0;
+  }
+
+  function isEditable(el) {
+    return (
+      matches(el, 'input,[contenteditable]') ||
+      matches(el, 'select,[contenteditable]') ||
+      matches(el, 'textarea,[contenteditable]') ||
+      matches(el, 'button,[contenteditable]')
+    );
+  }
+
+  function outerWidth(element) {
+    var styles = get(element);
+    return (
+      toInt(styles.width) +
+      toInt(styles.paddingLeft) +
+      toInt(styles.paddingRight) +
+      toInt(styles.borderLeftWidth) +
+      toInt(styles.borderRightWidth)
+    );
+  }
+
+  var env = {
+    isWebKit:
+      typeof document !== 'undefined' &&
+      'WebkitAppearance' in document.documentElement.style,
+    supportsTouch:
+      typeof window !== 'undefined' &&
+      ('ontouchstart' in window ||
+        ('maxTouchPoints' in window.navigator &&
+          window.navigator.maxTouchPoints > 0) ||
+        (window.DocumentTouch && document instanceof window.DocumentTouch)),
+    supportsIePointer:
+      typeof navigator !== 'undefined' && navigator.msMaxTouchPoints,
+    isChrome:
+      typeof navigator !== 'undefined' &&
+      /Chrome/i.test(navigator && navigator.userAgent),
+  };
+
+  function updateGeometry(i) {
+    var element = i.element;
+    var roundedScrollTop = Math.floor(element.scrollTop);
+    var rect = element.getBoundingClientRect();
+
+    i.containerWidth = Math.ceil(rect.width);
+    i.containerHeight = Math.ceil(rect.height);
+    i.contentWidth = element.scrollWidth;
+    i.contentHeight = element.scrollHeight;
+
+    if (!element.contains(i.scrollbarXRail)) {
+      // clean up and append
+      queryChildren(element, cls.element.rail('x')).forEach(function (el) { return remove(el); }
+      );
+      element.appendChild(i.scrollbarXRail);
+    }
+    if (!element.contains(i.scrollbarYRail)) {
+      // clean up and append
+      queryChildren(element, cls.element.rail('y')).forEach(function (el) { return remove(el); }
+      );
+      element.appendChild(i.scrollbarYRail);
+    }
+
+    if (
+      !i.settings.suppressScrollX &&
+      i.containerWidth + i.settings.scrollXMarginOffset < i.contentWidth
+    ) {
+      i.scrollbarXActive = true;
+      i.railXWidth = i.containerWidth - i.railXMarginWidth;
+      i.railXRatio = i.containerWidth / i.railXWidth;
+      i.scrollbarXWidth = getThumbSize(
+        i,
+        toInt((i.railXWidth * i.containerWidth) / i.contentWidth)
+      );
+      i.scrollbarXLeft = toInt(
+        ((i.negativeScrollAdjustment + element.scrollLeft) *
+          (i.railXWidth - i.scrollbarXWidth)) /
+          (i.contentWidth - i.containerWidth)
+      );
+    } else {
+      i.scrollbarXActive = false;
+    }
+
+    if (
+      !i.settings.suppressScrollY &&
+      i.containerHeight + i.settings.scrollYMarginOffset < i.contentHeight
+    ) {
+      i.scrollbarYActive = true;
+      i.railYHeight = i.containerHeight - i.railYMarginHeight;
+      i.railYRatio = i.containerHeight / i.railYHeight;
+      i.scrollbarYHeight = getThumbSize(
+        i,
+        toInt((i.railYHeight * i.containerHeight) / i.contentHeight)
+      );
+      i.scrollbarYTop = toInt(
+        (roundedScrollTop * (i.railYHeight - i.scrollbarYHeight)) /
+          (i.contentHeight - i.containerHeight)
+      );
+    } else {
+      i.scrollbarYActive = false;
+    }
+
+    if (i.scrollbarXLeft >= i.railXWidth - i.scrollbarXWidth) {
+      i.scrollbarXLeft = i.railXWidth - i.scrollbarXWidth;
+    }
+    if (i.scrollbarYTop >= i.railYHeight - i.scrollbarYHeight) {
+      i.scrollbarYTop = i.railYHeight - i.scrollbarYHeight;
+    }
+
+    updateCss(element, i);
+
+    if (i.scrollbarXActive) {
+      element.classList.add(cls.state.active('x'));
+    } else {
+      element.classList.remove(cls.state.active('x'));
+      i.scrollbarXWidth = 0;
+      i.scrollbarXLeft = 0;
+      element.scrollLeft = i.isRtl === true ? i.contentWidth : 0;
+    }
+    if (i.scrollbarYActive) {
+      element.classList.add(cls.state.active('y'));
+    } else {
+      element.classList.remove(cls.state.active('y'));
+      i.scrollbarYHeight = 0;
+      i.scrollbarYTop = 0;
+      element.scrollTop = 0;
+    }
+  }
+
+  function getThumbSize(i, thumbSize) {
+    if (i.settings.minScrollbarLength) {
+      thumbSize = Math.max(thumbSize, i.settings.minScrollbarLength);
+    }
+    if (i.settings.maxScrollbarLength) {
+      thumbSize = Math.min(thumbSize, i.settings.maxScrollbarLength);
+    }
+    return thumbSize;
+  }
+
+  function updateCss(element, i) {
+    var xRailOffset = { width: i.railXWidth };
+    var roundedScrollTop = Math.floor(element.scrollTop);
+
+    if (i.isRtl) {
+      xRailOffset.left =
+        i.negativeScrollAdjustment +
+        element.scrollLeft +
+        i.containerWidth -
+        i.contentWidth;
+    } else {
+      xRailOffset.left = element.scrollLeft;
+    }
+    if (i.isScrollbarXUsingBottom) {
+      xRailOffset.bottom = i.scrollbarXBottom - roundedScrollTop;
+    } else {
+      xRailOffset.top = i.scrollbarXTop + roundedScrollTop;
+    }
+    set(i.scrollbarXRail, xRailOffset);
+
+    var yRailOffset = { top: roundedScrollTop, height: i.railYHeight };
+    if (i.isScrollbarYUsingRight) {
+      if (i.isRtl) {
+        yRailOffset.right =
+          i.contentWidth -
+          (i.negativeScrollAdjustment + element.scrollLeft) -
+          i.scrollbarYRight -
+          i.scrollbarYOuterWidth -
+          9;
+      } else {
+        yRailOffset.right = i.scrollbarYRight - element.scrollLeft;
+      }
+    } else {
+      if (i.isRtl) {
+        yRailOffset.left =
+          i.negativeScrollAdjustment +
+          element.scrollLeft +
+          i.containerWidth * 2 -
+          i.contentWidth -
+          i.scrollbarYLeft -
+          i.scrollbarYOuterWidth;
+      } else {
+        yRailOffset.left = i.scrollbarYLeft + element.scrollLeft;
+      }
+    }
+    set(i.scrollbarYRail, yRailOffset);
+
+    set(i.scrollbarX, {
+      left: i.scrollbarXLeft,
+      width: i.scrollbarXWidth - i.railBorderXWidth,
+    });
+    set(i.scrollbarY, {
+      top: i.scrollbarYTop,
+      height: i.scrollbarYHeight - i.railBorderYWidth,
+    });
+  }
+
+  function clickRail(i) {
+    var element = i.element;
+
+    i.event.bind(i.scrollbarY, 'mousedown', function (e) { return e.stopPropagation(); });
+    i.event.bind(i.scrollbarYRail, 'mousedown', function (e) {
+      var positionTop =
+        e.pageY -
+        window.pageYOffset -
+        i.scrollbarYRail.getBoundingClientRect().top;
+      var direction = positionTop > i.scrollbarYTop ? 1 : -1;
+
+      i.element.scrollTop += direction * i.containerHeight;
+      updateGeometry(i);
+
+      e.stopPropagation();
+    });
+
+    i.event.bind(i.scrollbarX, 'mousedown', function (e) { return e.stopPropagation(); });
+    i.event.bind(i.scrollbarXRail, 'mousedown', function (e) {
+      var positionLeft =
+        e.pageX -
+        window.pageXOffset -
+        i.scrollbarXRail.getBoundingClientRect().left;
+      var direction = positionLeft > i.scrollbarXLeft ? 1 : -1;
+
+      i.element.scrollLeft += direction * i.containerWidth;
+      updateGeometry(i);
+
+      e.stopPropagation();
+    });
+  }
+
+  function dragThumb(i) {
+    bindMouseScrollHandler(i, [
+      'containerWidth',
+      'contentWidth',
+      'pageX',
+      'railXWidth',
+      'scrollbarX',
+      'scrollbarXWidth',
+      'scrollLeft',
+      'x',
+      'scrollbarXRail' ]);
+    bindMouseScrollHandler(i, [
+      'containerHeight',
+      'contentHeight',
+      'pageY',
+      'railYHeight',
+      'scrollbarY',
+      'scrollbarYHeight',
+      'scrollTop',
+      'y',
+      'scrollbarYRail' ]);
+  }
+
+  function bindMouseScrollHandler(
+    i,
+    ref
+  ) {
+    var containerHeight = ref[0];
+    var contentHeight = ref[1];
+    var pageY = ref[2];
+    var railYHeight = ref[3];
+    var scrollbarY = ref[4];
+    var scrollbarYHeight = ref[5];
+    var scrollTop = ref[6];
+    var y = ref[7];
+    var scrollbarYRail = ref[8];
+
+    var element = i.element;
+
+    var startingScrollTop = null;
+    var startingMousePageY = null;
+    var scrollBy = null;
+
+    function mouseMoveHandler(e) {
+      if (e.touches && e.touches[0]) {
+        e[pageY] = e.touches[0].pageY;
+      }
+      element[scrollTop] =
+        startingScrollTop + scrollBy * (e[pageY] - startingMousePageY);
+      addScrollingClass(i, y);
+      updateGeometry(i);
+
+      e.stopPropagation();
+      e.preventDefault();
+    }
+
+    function mouseUpHandler() {
+      removeScrollingClass(i, y);
+      i[scrollbarYRail].classList.remove(cls.state.clicking);
+      i.event.unbind(i.ownerDocument, 'mousemove', mouseMoveHandler);
+    }
+
+    function bindMoves(e, touchMode) {
+      startingScrollTop = element[scrollTop];
+      if (touchMode && e.touches) {
+        e[pageY] = e.touches[0].pageY;
+      }
+      startingMousePageY = e[pageY];
+      scrollBy =
+        (i[contentHeight] - i[containerHeight]) /
+        (i[railYHeight] - i[scrollbarYHeight]);
+      if (!touchMode) {
+        i.event.bind(i.ownerDocument, 'mousemove', mouseMoveHandler);
+        i.event.once(i.ownerDocument, 'mouseup', mouseUpHandler);
+        e.preventDefault();
+      } else {
+        i.event.bind(i.ownerDocument, 'touchmove', mouseMoveHandler);
+      }
+
+      i[scrollbarYRail].classList.add(cls.state.clicking);
+
+      e.stopPropagation();
+    }
+
+    i.event.bind(i[scrollbarY], 'mousedown', function (e) {
+      bindMoves(e);
+    });
+    i.event.bind(i[scrollbarY], 'touchstart', function (e) {
+      bindMoves(e, true);
+    });
+  }
+
+  function keyboard(i) {
+    var element = i.element;
+
+    var elementHovered = function () { return matches(element, ':hover'); };
+    var scrollbarFocused = function () { return matches(i.scrollbarX, ':focus') || matches(i.scrollbarY, ':focus'); };
+
+    function shouldPreventDefault(deltaX, deltaY) {
+      var scrollTop = Math.floor(element.scrollTop);
+      if (deltaX === 0) {
+        if (!i.scrollbarYActive) {
+          return false;
+        }
+        if (
+          (scrollTop === 0 && deltaY > 0) ||
+          (scrollTop >= i.contentHeight - i.containerHeight && deltaY < 0)
+        ) {
+          return !i.settings.wheelPropagation;
+        }
+      }
+
+      var scrollLeft = element.scrollLeft;
+      if (deltaY === 0) {
+        if (!i.scrollbarXActive) {
+          return false;
+        }
+        if (
+          (scrollLeft === 0 && deltaX < 0) ||
+          (scrollLeft >= i.contentWidth - i.containerWidth && deltaX > 0)
+        ) {
+          return !i.settings.wheelPropagation;
+        }
+      }
+      return true;
+    }
+
+    i.event.bind(i.ownerDocument, 'keydown', function (e) {
+      if (
+        (e.isDefaultPrevented && e.isDefaultPrevented()) ||
+        e.defaultPrevented
+      ) {
+        return;
+      }
+
+      if (!elementHovered() && !scrollbarFocused()) {
+        return;
+      }
+
+      var activeElement = document.activeElement
+        ? document.activeElement
+        : i.ownerDocument.activeElement;
+      if (activeElement) {
+        if (activeElement.tagName === 'IFRAME') {
+          activeElement = activeElement.contentDocument.activeElement;
+        } else {
+          // go deeper if element is a webcomponent
+          while (activeElement.shadowRoot) {
+            activeElement = activeElement.shadowRoot.activeElement;
+          }
+        }
+        if (isEditable(activeElement)) {
+          return;
+        }
+      }
+
+      var deltaX = 0;
+      var deltaY = 0;
+
+      switch (e.which) {
+        case 37: // left
+          if (e.metaKey) {
+            deltaX = -i.contentWidth;
+          } else if (e.altKey) {
+            deltaX = -i.containerWidth;
+          } else {
+            deltaX = -30;
+          }
+          break;
+        case 38: // up
+          if (e.metaKey) {
+            deltaY = i.contentHeight;
+          } else if (e.altKey) {
+            deltaY = i.containerHeight;
+          } else {
+            deltaY = 30;
+          }
+          break;
+        case 39: // right
+          if (e.metaKey) {
+            deltaX = i.contentWidth;
+          } else if (e.altKey) {
+            deltaX = i.containerWidth;
+          } else {
+            deltaX = 30;
+          }
+          break;
+        case 40: // down
+          if (e.metaKey) {
+            deltaY = -i.contentHeight;
+          } else if (e.altKey) {
+            deltaY = -i.containerHeight;
+          } else {
+            deltaY = -30;
+          }
+          break;
+        case 32: // space bar
+          if (e.shiftKey) {
+            deltaY = i.containerHeight;
+          } else {
+            deltaY = -i.containerHeight;
+          }
+          break;
+        case 33: // page up
+          deltaY = i.containerHeight;
+          break;
+        case 34: // page down
+          deltaY = -i.containerHeight;
+          break;
+        case 36: // home
+          deltaY = i.contentHeight;
+          break;
+        case 35: // end
+          deltaY = -i.contentHeight;
+          break;
+        default:
+          return;
+      }
+
+      if (i.settings.suppressScrollX && deltaX !== 0) {
+        return;
+      }
+      if (i.settings.suppressScrollY && deltaY !== 0) {
+        return;
+      }
+
+      element.scrollTop -= deltaY;
+      element.scrollLeft += deltaX;
+      updateGeometry(i);
+
+      if (shouldPreventDefault(deltaX, deltaY)) {
+        e.preventDefault();
+      }
+    });
+  }
+
+  function wheel(i) {
+    var element = i.element;
+
+    function shouldPreventDefault(deltaX, deltaY) {
+      var roundedScrollTop = Math.floor(element.scrollTop);
+      var isTop = element.scrollTop === 0;
+      var isBottom =
+        roundedScrollTop + element.offsetHeight === element.scrollHeight;
+      var isLeft = element.scrollLeft === 0;
+      var isRight =
+        element.scrollLeft + element.offsetWidth === element.scrollWidth;
+
+      var hitsBound;
+
+      // pick axis with primary direction
+      if (Math.abs(deltaY) > Math.abs(deltaX)) {
+        hitsBound = isTop || isBottom;
+      } else {
+        hitsBound = isLeft || isRight;
+      }
+
+      return hitsBound ? !i.settings.wheelPropagation : true;
+    }
+
+    function getDeltaFromEvent(e) {
+      var deltaX = e.deltaX;
+      var deltaY = -1 * e.deltaY;
+
+      if (typeof deltaX === 'undefined' || typeof deltaY === 'undefined') {
+        // OS X Safari
+        deltaX = (-1 * e.wheelDeltaX) / 6;
+        deltaY = e.wheelDeltaY / 6;
+      }
+
+      if (e.deltaMode && e.deltaMode === 1) {
+        // Firefox in deltaMode 1: Line scrolling
+        deltaX *= 10;
+        deltaY *= 10;
+      }
+
+      if (deltaX !== deltaX && deltaY !== deltaY /* NaN checks */) {
+        // IE in some mouse drivers
+        deltaX = 0;
+        deltaY = e.wheelDelta;
+      }
+
+      if (e.shiftKey) {
+        // reverse axis with shift key
+        return [-deltaY, -deltaX];
+      }
+      return [deltaX, deltaY];
+    }
+
+    function shouldBeConsumedByChild(target, deltaX, deltaY) {
+      // FIXME: this is a workaround for <select> issue in FF and IE #571
+      if (!env.isWebKit && element.querySelector('select:focus')) {
+        return true;
+      }
+
+      if (!element.contains(target)) {
+        return false;
+      }
+
+      var cursor = target;
+
+      while (cursor && cursor !== element) {
+        if (cursor.classList.contains(cls.element.consuming)) {
+          return true;
+        }
+
+        var style = get(cursor);
+
+        // if deltaY && vertical scrollable
+        if (deltaY && style.overflowY.match(/(scroll|auto)/)) {
+          var maxScrollTop = cursor.scrollHeight - cursor.clientHeight;
+          if (maxScrollTop > 0) {
+            if (
+              (cursor.scrollTop > 0 && deltaY < 0) ||
+              (cursor.scrollTop < maxScrollTop && deltaY > 0)
+            ) {
+              return true;
+            }
+          }
+        }
+        // if deltaX && horizontal scrollable
+        if (deltaX && style.overflowX.match(/(scroll|auto)/)) {
+          var maxScrollLeft = cursor.scrollWidth - cursor.clientWidth;
+          if (maxScrollLeft > 0) {
+            if (
+              (cursor.scrollLeft > 0 && deltaX < 0) ||
+              (cursor.scrollLeft < maxScrollLeft && deltaX > 0)
+            ) {
+              return true;
+            }
+          }
+        }
+
+        cursor = cursor.parentNode;
+      }
+
+      return false;
+    }
+
+    function mousewheelHandler(e) {
+      var ref = getDeltaFromEvent(e);
+      var deltaX = ref[0];
+      var deltaY = ref[1];
+
+      if (shouldBeConsumedByChild(e.target, deltaX, deltaY)) {
+        return;
+      }
+
+      var shouldPrevent = false;
+      if (!i.settings.useBothWheelAxes) {
+        // deltaX will only be used for horizontal scrolling and deltaY will
+        // only be used for vertical scrolling - this is the default
+        element.scrollTop -= deltaY * i.settings.wheelSpeed;
+        element.scrollLeft += deltaX * i.settings.wheelSpeed;
+      } else if (i.scrollbarYActive && !i.scrollbarXActive) {
+        // only vertical scrollbar is active and useBothWheelAxes option is
+        // active, so let's scroll vertical bar using both mouse wheel axes
+        if (deltaY) {
+          element.scrollTop -= deltaY * i.settings.wheelSpeed;
+        } else {
+          element.scrollTop += deltaX * i.settings.wheelSpeed;
+        }
+        shouldPrevent = true;
+      } else if (i.scrollbarXActive && !i.scrollbarYActive) {
+        // useBothWheelAxes and only horizontal bar is active, so use both
+        // wheel axes for horizontal bar
+        if (deltaX) {
+          element.scrollLeft += deltaX * i.settings.wheelSpeed;
+        } else {
+          element.scrollLeft -= deltaY * i.settings.wheelSpeed;
+        }
+        shouldPrevent = true;
+      }
+
+      updateGeometry(i);
+
+      shouldPrevent = shouldPrevent || shouldPreventDefault(deltaX, deltaY);
+      if (shouldPrevent && !e.ctrlKey) {
+        e.stopPropagation();
+        e.preventDefault();
+      }
+    }
+
+    if (typeof window.onwheel !== 'undefined') {
+      i.event.bind(element, 'wheel', mousewheelHandler);
+    } else if (typeof window.onmousewheel !== 'undefined') {
+      i.event.bind(element, 'mousewheel', mousewheelHandler);
+    }
+  }
+
+  function touch(i) {
+    if (!env.supportsTouch && !env.supportsIePointer) {
+      return;
+    }
+
+    var element = i.element;
+
+    function shouldPrevent(deltaX, deltaY) {
+      var scrollTop = Math.floor(element.scrollTop);
+      var scrollLeft = element.scrollLeft;
+      var magnitudeX = Math.abs(deltaX);
+      var magnitudeY = Math.abs(deltaY);
+
+      if (magnitudeY > magnitudeX) {
+        // user is perhaps trying to swipe up/down the page
+
+        if (
+          (deltaY < 0 && scrollTop === i.contentHeight - i.containerHeight) ||
+          (deltaY > 0 && scrollTop === 0)
+        ) {
+          // set prevent for mobile Chrome refresh
+          return window.scrollY === 0 && deltaY > 0 && env.isChrome;
+        }
+      } else if (magnitudeX > magnitudeY) {
+        // user is perhaps trying to swipe left/right across the page
+
+        if (
+          (deltaX < 0 && scrollLeft === i.contentWidth - i.containerWidth) ||
+          (deltaX > 0 && scrollLeft === 0)
+        ) {
+          return true;
+        }
+      }
+
+      return true;
+    }
+
+    function applyTouchMove(differenceX, differenceY) {
+      element.scrollTop -= differenceY;
+      element.scrollLeft -= differenceX;
+
+      updateGeometry(i);
+    }
+
+    var startOffset = {};
+    var startTime = 0;
+    var speed = {};
+    var easingLoop = null;
+
+    function getTouch(e) {
+      if (e.targetTouches) {
+        return e.targetTouches[0];
+      } else {
+        // Maybe IE pointer
+        return e;
+      }
+    }
+
+    function shouldHandle(e) {
+      if (e.pointerType && e.pointerType === 'pen' && e.buttons === 0) {
+        return false;
+      }
+      if (e.targetTouches && e.targetTouches.length === 1) {
+        return true;
+      }
+      if (
+        e.pointerType &&
+        e.pointerType !== 'mouse' &&
+        e.pointerType !== e.MSPOINTER_TYPE_MOUSE
+      ) {
+        return true;
+      }
+      return false;
+    }
+
+    function touchStart(e) {
+      if (!shouldHandle(e)) {
+        return;
+      }
+
+      var touch = getTouch(e);
+
+      startOffset.pageX = touch.pageX;
+      startOffset.pageY = touch.pageY;
+
+      startTime = new Date().getTime();
+
+      if (easingLoop !== null) {
+        clearInterval(easingLoop);
+      }
+    }
+
+    function shouldBeConsumedByChild(target, deltaX, deltaY) {
+      if (!element.contains(target)) {
+        return false;
+      }
+
+      var cursor = target;
+
+      while (cursor && cursor !== element) {
+        if (cursor.classList.contains(cls.element.consuming)) {
+          return true;
+        }
+
+        var style = get(cursor);
+
+        // if deltaY && vertical scrollable
+        if (deltaY && style.overflowY.match(/(scroll|auto)/)) {
+          var maxScrollTop = cursor.scrollHeight - cursor.clientHeight;
+          if (maxScrollTop > 0) {
+            if (
+              (cursor.scrollTop > 0 && deltaY < 0) ||
+              (cursor.scrollTop < maxScrollTop && deltaY > 0)
+            ) {
+              return true;
+            }
+          }
+        }
+        // if deltaX && horizontal scrollable
+        if (deltaX && style.overflowX.match(/(scroll|auto)/)) {
+          var maxScrollLeft = cursor.scrollWidth - cursor.clientWidth;
+          if (maxScrollLeft > 0) {
+            if (
+              (cursor.scrollLeft > 0 && deltaX < 0) ||
+              (cursor.scrollLeft < maxScrollLeft && deltaX > 0)
+            ) {
+              return true;
+            }
+          }
+        }
+
+        cursor = cursor.parentNode;
+      }
+
+      return false;
+    }
+
+    function touchMove(e) {
+      if (shouldHandle(e)) {
+        var touch = getTouch(e);
+
+        var currentOffset = { pageX: touch.pageX, pageY: touch.pageY };
+
+        var differenceX = currentOffset.pageX - startOffset.pageX;
+        var differenceY = currentOffset.pageY - startOffset.pageY;
+
+        if (shouldBeConsumedByChild(e.target, differenceX, differenceY)) {
+          return;
+        }
+
+        applyTouchMove(differenceX, differenceY);
+        startOffset = currentOffset;
+
+        var currentTime = new Date().getTime();
+
+        var timeGap = currentTime - startTime;
+        if (timeGap > 0) {
+          speed.x = differenceX / timeGap;
+          speed.y = differenceY / timeGap;
+          startTime = currentTime;
+        }
+
+        if (shouldPrevent(differenceX, differenceY)) {
+          e.preventDefault();
+        }
+      }
+    }
+    function touchEnd() {
+      if (i.settings.swipeEasing) {
+        clearInterval(easingLoop);
+        easingLoop = setInterval(function() {
+          if (i.isInitialized) {
+            clearInterval(easingLoop);
+            return;
+          }
+
+          if (!speed.x && !speed.y) {
+            clearInterval(easingLoop);
+            return;
+          }
+
+          if (Math.abs(speed.x) < 0.01 && Math.abs(speed.y) < 0.01) {
+            clearInterval(easingLoop);
+            return;
+          }
+
+          applyTouchMove(speed.x * 30, speed.y * 30);
+
+          speed.x *= 0.8;
+          speed.y *= 0.8;
+        }, 10);
+      }
+    }
+
+    if (env.supportsTouch) {
+      i.event.bind(element, 'touchstart', touchStart);
+      i.event.bind(element, 'touchmove', touchMove);
+      i.event.bind(element, 'touchend', touchEnd);
+    } else if (env.supportsIePointer) {
+      if (window.PointerEvent) {
+        i.event.bind(element, 'pointerdown', touchStart);
+        i.event.bind(element, 'pointermove', touchMove);
+        i.event.bind(element, 'pointerup', touchEnd);
+      } else if (window.MSPointerEvent) {
+        i.event.bind(element, 'MSPointerDown', touchStart);
+        i.event.bind(element, 'MSPointerMove', touchMove);
+        i.event.bind(element, 'MSPointerUp', touchEnd);
+      }
+    }
+  }
+
+  var defaultSettings = function () { return ({
+    handlers: ['click-rail', 'drag-thumb', 'keyboard', 'wheel', 'touch'],
+    maxScrollbarLength: null,
+    minScrollbarLength: null,
+    scrollingThreshold: 1000,
+    scrollXMarginOffset: 0,
+    scrollYMarginOffset: 0,
+    suppressScrollX: false,
+    suppressScrollY: false,
+    swipeEasing: true,
+    useBothWheelAxes: false,
+    wheelPropagation: true,
+    wheelSpeed: 1,
+  }); };
+
+  var handlers = {
+    'click-rail': clickRail,
+    'drag-thumb': dragThumb,
+    keyboard: keyboard,
+    wheel: wheel,
+    touch: touch,
+  };
+
+  var PerfectScrollbar = function PerfectScrollbar(element, userSettings) {
+    var this$2 = this;
+
+    var this$1 = this;
+    if ( userSettings === void 0 ) { userSettings = {}; }
+
+    if (typeof element === 'string') {
+      element = document.querySelector(element);
+    }
+
+    if (!element || !element.nodeName) {
+      throw new Error('no element is specified to initialize PerfectScrollbar');
+    }
+
+    this.element = element;
+
+    element.classList.add(cls.main);
+
+    this.settings = defaultSettings();
+    for (var key in userSettings) {
+      this$2.settings[key] = userSettings[key];
+    }
+
+    this.containerWidth = null;
+    this.containerHeight = null;
+    this.contentWidth = null;
+    this.contentHeight = null;
+
+    var focus = function () { return element.classList.add(cls.state.focus); };
+    var blur = function () { return element.classList.remove(cls.state.focus); };
+
+    this.isRtl = get(element).direction === 'rtl';
+    if (this.isRtl === true) {
+      element.classList.add(cls.rtl);
+    }
+    this.isNegativeScroll = (function () {
+      var originalScrollLeft = element.scrollLeft;
+      var result = null;
+      element.scrollLeft = -1;
+      result = element.scrollLeft < 0;
+      element.scrollLeft = originalScrollLeft;
+      return result;
+    })();
+    this.negativeScrollAdjustment = this.isNegativeScroll
+      ? element.scrollWidth - element.clientWidth
+      : 0;
+    this.event = new EventManager();
+    this.ownerDocument = element.ownerDocument || document;
+
+    this.scrollbarXRail = div(cls.element.rail('x'));
+    element.appendChild(this.scrollbarXRail);
+    this.scrollbarX = div(cls.element.thumb('x'));
+    this.scrollbarXRail.appendChild(this.scrollbarX);
+    this.scrollbarX.setAttribute('tabindex', 0);
+    this.event.bind(this.scrollbarX, 'focus', focus);
+    this.event.bind(this.scrollbarX, 'blur', blur);
+    this.scrollbarXActive = null;
+    this.scrollbarXWidth = null;
+    this.scrollbarXLeft = null;
+    var railXStyle = get(this.scrollbarXRail);
+    this.scrollbarXBottom = parseInt(railXStyle.bottom, 10);
+    if (isNaN(this.scrollbarXBottom)) {
+      this.isScrollbarXUsingBottom = false;
+      this.scrollbarXTop = toInt(railXStyle.top);
+    } else {
+      this.isScrollbarXUsingBottom = true;
+    }
+    this.railBorderXWidth =
+      toInt(railXStyle.borderLeftWidth) + toInt(railXStyle.borderRightWidth);
+    // Set rail to display:block to calculate margins
+    set(this.scrollbarXRail, { display: 'block' });
+    this.railXMarginWidth =
+      toInt(railXStyle.marginLeft) + toInt(railXStyle.marginRight);
+    set(this.scrollbarXRail, { display: '' });
+    this.railXWidth = null;
+    this.railXRatio = null;
+
+    this.scrollbarYRail = div(cls.element.rail('y'));
+    element.appendChild(this.scrollbarYRail);
+    this.scrollbarY = div(cls.element.thumb('y'));
+    this.scrollbarYRail.appendChild(this.scrollbarY);
+    this.scrollbarY.setAttribute('tabindex', 0);
+    this.event.bind(this.scrollbarY, 'focus', focus);
+    this.event.bind(this.scrollbarY, 'blur', blur);
+    this.scrollbarYActive = null;
+    this.scrollbarYHeight = null;
+    this.scrollbarYTop = null;
+    var railYStyle = get(this.scrollbarYRail);
+    this.scrollbarYRight = parseInt(railYStyle.right, 10);
+    if (isNaN(this.scrollbarYRight)) {
+      this.isScrollbarYUsingRight = false;
+      this.scrollbarYLeft = toInt(railYStyle.left);
+    } else {
+      this.isScrollbarYUsingRight = true;
+    }
+    this.scrollbarYOuterWidth = this.isRtl ? outerWidth(this.scrollbarY) : null;
+    this.railBorderYWidth =
+      toInt(railYStyle.borderTopWidth) + toInt(railYStyle.borderBottomWidth);
+    set(this.scrollbarYRail, { display: 'block' });
+    this.railYMarginHeight =
+      toInt(railYStyle.marginTop) + toInt(railYStyle.marginBottom);
+    set(this.scrollbarYRail, { display: '' });
+    this.railYHeight = null;
+    this.railYRatio = null;
+
+    this.reach = {
+      x:
+        element.scrollLeft <= 0
+          ? 'start'
+          : element.scrollLeft >= this.contentWidth - this.containerWidth
+          ? 'end'
+          : null,
+      y:
+        element.scrollTop <= 0
+          ? 'start'
+          : element.scrollTop >= this.contentHeight - this.containerHeight
+          ? 'end'
+          : null,
+    };
+
+    this.isAlive = true;
+
+    this.settings.handlers.forEach(function (handlerName) { return handlers[handlerName](this$1); });
+
+    this.lastScrollTop = Math.floor(element.scrollTop); // for onScroll only
+    this.lastScrollLeft = element.scrollLeft; // for onScroll only
+    this.event.bind(this.element, 'scroll', function (e) { return this$1.onScroll(e); });
+    updateGeometry(this);
+  };
+
+  PerfectScrollbar.prototype.update = function update () {
+    if (!this.isAlive) {
+      return;
+    }
+
+    // Recalcuate negative scrollLeft adjustment
+    this.negativeScrollAdjustment = this.isNegativeScroll
+      ? this.element.scrollWidth - this.element.clientWidth
+      : 0;
+
+    // Recalculate rail margins
+    set(this.scrollbarXRail, { display: 'block' });
+    set(this.scrollbarYRail, { display: 'block' });
+    this.railXMarginWidth =
+      toInt(get(this.scrollbarXRail).marginLeft) +
+      toInt(get(this.scrollbarXRail).marginRight);
+    this.railYMarginHeight =
+      toInt(get(this.scrollbarYRail).marginTop) +
+      toInt(get(this.scrollbarYRail).marginBottom);
+
+    // Hide scrollbars not to affect scrollWidth and scrollHeight
+    set(this.scrollbarXRail, { display: 'none' });
+    set(this.scrollbarYRail, { display: 'none' });
+
+    updateGeometry(this);
+
+    processScrollDiff(this, 'top', 0, false, true);
+    processScrollDiff(this, 'left', 0, false, true);
+
+    set(this.scrollbarXRail, { display: '' });
+    set(this.scrollbarYRail, { display: '' });
+  };
+
+  PerfectScrollbar.prototype.onScroll = function onScroll (e) {
+    if (!this.isAlive) {
+      return;
+    }
+
+    updateGeometry(this);
+    processScrollDiff(this, 'top', this.element.scrollTop - this.lastScrollTop);
+    processScrollDiff(
+      this,
+      'left',
+      this.element.scrollLeft - this.lastScrollLeft
+    );
+
+    this.lastScrollTop = Math.floor(this.element.scrollTop);
+    this.lastScrollLeft = this.element.scrollLeft;
+  };
+
+  PerfectScrollbar.prototype.destroy = function destroy () {
+    if (!this.isAlive) {
+      return;
+    }
+
+    this.event.unbindAll();
+    remove(this.scrollbarX);
+    remove(this.scrollbarY);
+    remove(this.scrollbarXRail);
+    remove(this.scrollbarYRail);
+    this.removePsClasses();
+
+    // unset elements
+    this.element = null;
+    this.scrollbarX = null;
+    this.scrollbarY = null;
+    this.scrollbarXRail = null;
+    this.scrollbarYRail = null;
+
+    this.isAlive = false;
+  };
+
+  PerfectScrollbar.prototype.removePsClasses = function removePsClasses () {
+    this.element.className = this.element.className
+      .split(' ')
+      .filter(function (name) { return !name.match(/^ps([-_].+|)$/); })
+      .join(' ');
+  };
+
+  var PerfectScrollbar$1 = {
+    name: 'PerfectScrollbar',
+    props: {
+      options: {
+        type: Object,
+        required: false,
+        default: function () {}
+      },
+      tag: {
+        type: String,
+        required: false,
+        default: 'div'
+      },
+      watchOptions: {
+        type: Boolean,
+        required: false,
+        default: false
+      }
+    },
+    data: function data () {
+      return {
+        ps: null
+      }
+    },
+    watch: {
+      watchOptions: function watchOptions (shouldWatch) {
+        if (!shouldWatch && this.watcher) {
+          this.watcher();
+        } else {
+          this.createWatcher();
+        }
+      }
+    },
+    mounted: function mounted () {
+      this.create();
+
+      if (this.watchOptions) {
+        this.createWatcher();
+      }
+    },
+    updated: function updated () {
+      var this$1 = this;
+
+      this.$nextTick(function () {
+        this$1.update();
+      });
+    },
+    beforeDestroy: function beforeDestroy () {
+      this.destroy();
+    },
+    methods: {
+      create: function create () {
+        if (!(this.ps && this.$isServer)) {
+          this.ps = new PerfectScrollbar(this.$refs.container, this.options);
+        }
+      },
+      createWatcher: function createWatcher () {
+        var this$1 = this;
+
+        this.watcher = this.$watch('options', function () {
+          this$1.destroy();
+          this$1.create();
+        }, {
+          deep: true
+        });
+      },
+      update: function update () {
+        if (this.ps) {
+          this.ps.update();
+        }
+      },
+      destroy: function destroy () {
+        if (this.ps) {
+          this.ps.destroy();
+          this.ps = null;
+        }
+      }
+    },
+    render: function render (h) {
+      return h(this.tag,
+        {
+          ref: 'container',
+          class: 'ps',
+          on: this.$listeners
+        },
+        this.$slots.default)
+    }
+  };
+
+  function install (Vue, settings) {
+    if (settings) {
+      if (settings.name && typeof settings.name === 'string') {
+        PerfectScrollbar$1.name = settings.name;
+      }
+
+      if (settings.options && typeof settings.options === 'object') {
+        PerfectScrollbar$1.props.options.default = function () {
+          return settings.options
+        };
+      }
+
+      if (settings.tag && typeof settings.tag === 'string') {
+        PerfectScrollbar$1.props.tag.default = settings.tag;
+      }
+
+      if (settings.watchOptions && typeof settings.watchOptions === 'boolean') {
+        PerfectScrollbar$1.props.watchOptions = settings.watchOptions;
+      }
+    }
+
+    Vue.component(
+      PerfectScrollbar$1.name,
+      PerfectScrollbar$1
+    );
+  }
+
+  exports.install = install;
+  exports.PerfectScrollbar = PerfectScrollbar$1;
+  exports.default = install;
+
+  Object.defineProperty(exports, '__esModule', { value: true });
+
+})));
+
+
+/***/ }),
+
 /***/ "./node_modules/vuex/dist/vuex.esm.js":
 /*!********************************************!*\
   !*** ./node_modules/vuex/dist/vuex.esm.js ***!
@@ -67044,15 +68642,16 @@ module.exports = g;
 /*!*******************************!*\
   !*** ./resources/js/Main.vue ***!
   \*******************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Main_vue_vue_type_template_id_01a582d7___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Main.vue?vue&type=template&id=01a582d7& */ "./resources/js/Main.vue?vue&type=template&id=01a582d7&");
 /* harmony import */ var _Main_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Main.vue?vue&type=script&lang=js& */ "./resources/js/Main.vue?vue&type=script&lang=js&");
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _Main_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _Main_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* empty/unused harmony star reexport *//* harmony import */ var _Main_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Main.vue?vue&type=style&index=0&lang=css& */ "./resources/js/Main.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
 
 
 
@@ -67060,7 +68659,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* normalize component */
 
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
   _Main_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
   _Main_vue_vue_type_template_id_01a582d7___WEBPACK_IMPORTED_MODULE_0__["render"],
   _Main_vue_vue_type_template_id_01a582d7___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
@@ -67082,15 +68681,29 @@ component.options.__file = "resources/js/Main.vue"
 /*!********************************************************!*\
   !*** ./resources/js/Main.vue?vue&type=script&lang=js& ***!
   \********************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Main_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../node_modules/babel-loader/lib??ref--4-0!../../node_modules/vue-loader/lib??vue-loader-options!./Main.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Main.vue?vue&type=script&lang=js&");
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Main_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Main_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__);
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Main_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Main_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
- /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Main_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0___default.a); 
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Main_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/Main.vue?vue&type=style&index=0&lang=css&":
+/*!****************************************************************!*\
+  !*** ./resources/js/Main.vue?vue&type=style&index=0&lang=css& ***!
+  \****************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Main_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../node_modules/style-loader!../../node_modules/css-loader??ref--5-1!../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../node_modules/postcss-loader/src??ref--5-2!../../node_modules/vue-loader/lib??vue-loader-options!./Main.vue?vue&type=style&index=0&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/Main.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Main_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Main_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Main_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Main_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Main_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
 
 /***/ }),
 
@@ -67126,17 +68739,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var bootstrap_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! bootstrap-vue */ "./node_modules/bootstrap-vue/esm/index.js");
 /* harmony import */ var vue_2_breadcrumbs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vue-2-breadcrumbs */ "./node_modules/vue-2-breadcrumbs/lib/vue-2-breadcrumbs.umd.js");
 /* harmony import */ var vue_2_breadcrumbs__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(vue_2_breadcrumbs__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var bootstrap_dist_css_bootstrap_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! bootstrap/dist/css/bootstrap.css */ "./node_modules/bootstrap/dist/css/bootstrap.css");
-/* harmony import */ var bootstrap_dist_css_bootstrap_css__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(bootstrap_dist_css_bootstrap_css__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var bootstrap_vue_dist_bootstrap_vue_css__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! bootstrap-vue/dist/bootstrap-vue.css */ "./node_modules/bootstrap-vue/dist/bootstrap-vue.css");
-/* harmony import */ var bootstrap_vue_dist_bootstrap_vue_css__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(bootstrap_vue_dist_bootstrap_vue_css__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _views_swsh_index__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @/views/swsh/index */ "./resources/js/views/swsh/index.vue");
-/* harmony import */ var _views_swsh_calculation_index__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @/views/swsh/calculation/index */ "./resources/js/views/swsh/calculation/index.vue");
-/* harmony import */ var _views_swsh_calculation_detail__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @/views/swsh/calculation/detail */ "./resources/js/views/swsh/calculation/detail.vue");
-/* harmony import */ var _views_swsh_ranking_index__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @/views/swsh/ranking/index */ "./resources/js/views/swsh/ranking/index.vue");
-/* harmony import */ var _views_swsh_demo_index__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @/views/swsh/demo/index */ "./resources/js/views/swsh/demo/index.vue");
-/* harmony import */ var _views_swsh_register_index__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @/views/swsh/register/index */ "./resources/js/views/swsh/register/index.vue");
-/* harmony import */ var _views_error_notFound__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @/views/error/notFound */ "./resources/js/views/error/notFound.vue");
+/* harmony import */ var vue2_perfect_scrollbar__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vue2-perfect-scrollbar */ "./node_modules/vue2-perfect-scrollbar/dist/vue2-perfect-scrollbar.umd.js");
+/* harmony import */ var vue2_perfect_scrollbar__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(vue2_perfect_scrollbar__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var bootstrap_dist_css_bootstrap_css__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! bootstrap/dist/css/bootstrap.css */ "./node_modules/bootstrap/dist/css/bootstrap.css");
+/* harmony import */ var bootstrap_dist_css_bootstrap_css__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(bootstrap_dist_css_bootstrap_css__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var bootstrap_vue_dist_bootstrap_vue_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! bootstrap-vue/dist/bootstrap-vue.css */ "./node_modules/bootstrap-vue/dist/bootstrap-vue.css");
+/* harmony import */ var bootstrap_vue_dist_bootstrap_vue_css__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(bootstrap_vue_dist_bootstrap_vue_css__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var vue2_perfect_scrollbar_dist_vue2_perfect_scrollbar_css__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! vue2-perfect-scrollbar/dist/vue2-perfect-scrollbar.css */ "./node_modules/vue2-perfect-scrollbar/dist/vue2-perfect-scrollbar.css");
+/* harmony import */ var vue2_perfect_scrollbar_dist_vue2_perfect_scrollbar_css__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(vue2_perfect_scrollbar_dist_vue2_perfect_scrollbar_css__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _views_swsh_index__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @/views/swsh/index */ "./resources/js/views/swsh/index.vue");
+/* harmony import */ var _views_swsh_calculation_index__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @/views/swsh/calculation/index */ "./resources/js/views/swsh/calculation/index.vue");
+/* harmony import */ var _views_swsh_calculation_detail__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @/views/swsh/calculation/detail */ "./resources/js/views/swsh/calculation/detail.vue");
+/* harmony import */ var _views_swsh_ranking_index__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @/views/swsh/ranking/index */ "./resources/js/views/swsh/ranking/index.vue");
+/* harmony import */ var _views_swsh_demo_index__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @/views/swsh/demo/index */ "./resources/js/views/swsh/demo/index.vue");
+/* harmony import */ var _views_swsh_register_index__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @/views/swsh/register/index */ "./resources/js/views/swsh/register/index.vue");
+/* harmony import */ var _views_error_notFound__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @/views/error/notFound */ "./resources/js/views/error/notFound.vue");
+
+
 
 
 
@@ -67153,6 +68772,7 @@ __webpack_require__.r(__webpack_exports__);
 vue__WEBPACK_IMPORTED_MODULE_0__["default"].use(vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]);
 vue__WEBPACK_IMPORTED_MODULE_0__["default"].use(bootstrap_vue__WEBPACK_IMPORTED_MODULE_2__["default"]);
 vue__WEBPACK_IMPORTED_MODULE_0__["default"].use(vue_2_breadcrumbs__WEBPACK_IMPORTED_MODULE_3___default.a);
+vue__WEBPACK_IMPORTED_MODULE_0__["default"].use(vue2_perfect_scrollbar__WEBPACK_IMPORTED_MODULE_4___default.a);
 var routeList = [{
   path: '',
   redirect: '/swsh',
@@ -67190,7 +68810,7 @@ var routeList = [{
           label: 'TOP'
         }
       },
-      component: _views_swsh_index__WEBPACK_IMPORTED_MODULE_6__["default"]
+      component: _views_swsh_index__WEBPACK_IMPORTED_MODULE_8__["default"]
     }, {
       path: 'calculation',
       name: 'calculation',
@@ -67215,7 +68835,7 @@ var routeList = [{
             label: '検索・一覧'
           }
         },
-        component: _views_swsh_calculation_index__WEBPACK_IMPORTED_MODULE_7__["default"]
+        component: _views_swsh_calculation_index__WEBPACK_IMPORTED_MODULE_9__["default"]
       }, {
         path: 'detail',
         name: 'calculationDetail',
@@ -67225,7 +68845,7 @@ var routeList = [{
             label: '詳細'
           }
         },
-        component: _views_swsh_calculation_detail__WEBPACK_IMPORTED_MODULE_8__["default"]
+        component: _views_swsh_calculation_detail__WEBPACK_IMPORTED_MODULE_10__["default"]
       }]
     }, {
       path: 'ranking',
@@ -67251,7 +68871,7 @@ var routeList = [{
             label: '各種ランキング'
           }
         },
-        component: _views_swsh_ranking_index__WEBPACK_IMPORTED_MODULE_9__["default"]
+        component: _views_swsh_ranking_index__WEBPACK_IMPORTED_MODULE_11__["default"]
       }]
     }, {
       path: 'demo',
@@ -67277,7 +68897,7 @@ var routeList = [{
             label: 'テスト'
           }
         },
-        component: _views_swsh_demo_index__WEBPACK_IMPORTED_MODULE_10__["default"]
+        component: _views_swsh_demo_index__WEBPACK_IMPORTED_MODULE_12__["default"]
       }]
     }, {
       path: 'register',
@@ -67303,14 +68923,14 @@ var routeList = [{
             label: 'ポケモン選択'
           }
         },
-        component: _views_swsh_register_index__WEBPACK_IMPORTED_MODULE_11__["default"]
+        component: _views_swsh_register_index__WEBPACK_IMPORTED_MODULE_13__["default"]
       }]
     }]
   }]
 }, {
   path: '*',
   name: 'NotFound',
-  component: _views_error_notFound__WEBPACK_IMPORTED_MODULE_12__["default"]
+  component: _views_error_notFound__WEBPACK_IMPORTED_MODULE_14__["default"]
 }];
 /* harmony default export */ __webpack_exports__["default"] = (new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   scrollBehavior: function scrollBehavior() {

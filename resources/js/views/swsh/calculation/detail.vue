@@ -17,24 +17,24 @@
                 </b-container>
             </b-card>
         </b-card-group>
-        <b-card-group class="m-lg-1 text-center">
+        <b-card-group class="m-lg-0 text-center">
             <b-card>H = 体力, A = 攻撃, B =防御, C = 特攻, D = 特防, S = 素早</b-card>
         </b-card-group>
-        <b-card-group class="m-lg-1">
+        <b-card-group class="m-lg-0">
             <b-card>
                 <b-card-text class="text-center font-weight-bolder">種族値(赤:0〜49, 黄:50〜99, 緑:100〜)</b-card-text>
                 <div size="sm" v-for="bv in bvList" :key="bv.id">
-                    <b-input-group class="mb-xl-1">
-                        <b-form class="mb-xl-2">{{bv.name}} {{bv.value}}</b-form>
+                    <b-input-group class="mb-xl-0">
+                        <b-form class="mb-xl-1">{{bv.name}} {{bv.value}}</b-form>
                     </b-input-group>
-                    <b-progress class="mb-lg-2" :value="bv.value" :max="255" :variant="bv.color" show-value animated></b-progress>
+                    <b-progress class="mb-lg-1" :value="bv.value" :max="255" :variant="bv.color" show-value animated></b-progress>
                 </div>
             </b-card>
             <b-card>
                 <b-card-text class="text-center font-weight-bolder">個体値(0 〜 31)</b-card-text>
                 <div size="sm" v-for="iv in ivList" :key="iv.id" @input="iv.value=validateNumber(iv.value, typeIv)" onkeydown="return !['.', 'e', 'E', '-', '+'].includes(event.key)">
                     <b-input-group>
-                        <b-form class="m-lg-1">{{iv.name}}</b-form>
+                        <b-form class="m-lg-0">{{iv.name}}</b-form>
                         <b-form-input size="sm" class="col-3" type="number" v-model.number="iv.value" min="0" max="31" step="1"></b-form-input>
                         <div >{{ivStatusName(iv.value)}}</div>
                     </b-input-group>
@@ -45,7 +45,7 @@
                 <b-card-text class="text-center font-weight-bolder">努力値(0 〜 252, 計510)</b-card-text>
                 <div size="sm" v-for="ev in evList" :key="ev.id" @input="ev.value=validateNumber(ev.value, typeEv)" onkeydown="return !['.', 'e', 'E', '-', '+'].includes(event.key)">
                     <b-input-group>
-                        <b-form class="m-lg-1">{{ev.name}}</b-form>
+                        <b-form class="m-lg-0">{{ev.name}}</b-form>
                         <b-form-input size="sm" class="col-3" type="number" v-model.number="ev.value" min="0" max="252" step="4"></b-form-input>
                     </b-input-group>
                     <b-form-input size="sm" v-model.number="ev.value" type="range" max="252" step="4"></b-form-input>
@@ -54,21 +54,21 @@
             <b-card>
                 <b-card-text class="text-center font-weight-bolder">レベル</b-card-text>
                 <b-input-group @input="level=validateNumber(level, typeLevel)" onkeydown="return !['.', 'e', 'E', '-', '+'].includes(event.key)">
-                    <b-form class="m-lg-1">Lv:</b-form>
-                    <b-form-input size="sm" class="col-3" type="number" v-model.number="level" min="1" max="100" step="1"></b-form-input>
+                    <b-form class="m-lg-0">Lv:</b-form>
+                    <b-form-input size="sm" class="col-2" type="number" v-model.number="level" min="1" max="100" step="1"></b-form-input>
                     <b-button size="sm" @click="level=50">50</b-button>
                     <b-button size="sm" @click="level=100">100</b-button>
                 </b-input-group>
                 <b-form-input size="sm" v-model.number="level" type="range" min="1" max="100"></b-form-input>
 
-                <b-card-text class="text-center font-weight-bolder mt-4">性格(↑: 1.1倍, ↓: 0.9倍)</b-card-text>
+                <b-card-text class="text-center font-weight-bolder mt-2">性格(↑: 1.1倍, ↓: 0.9倍)</b-card-text>
                 <b-form-select v-model="personalId">
                     <b-form-select-option v-for="personal in personalityList" :key="personal.id" :value="personal.id">{{personal.text}}</b-form-select-option>
                 </b-form-select>
-                <b-card-text class="mt-3" v-if="personalityList.length !== 0">性格: {{selectedPersonal().text}}</b-card-text>
+                <b-card-text class="mt-2" v-if="personalityList.length !== 0">性格: {{selectedPersonal().text}}</b-card-text>
             </b-card>
         </b-card-group>
-        <b-card-group class="m-lg-1">
+        <b-card-group class="m-lg-0">
             <b-card>
                 <b-card-text class="text-center font-weight-bolder">結果</b-card-text>
                 <b-card-text class="text-center font-weight-bolder">{{resultStatus}}</b-card-text>
