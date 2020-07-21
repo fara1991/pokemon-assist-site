@@ -4,7 +4,7 @@
             <b-link href="/">ポケモン バトルデータ</b-link>
         </b-card-header>
         <div class="container-fluid">
-            <b-card-body class="m-lg-2">
+            <b-card-body>
                 <Breadcrumbs></Breadcrumbs>
                 <perfect-scrollbar>
                     <p>

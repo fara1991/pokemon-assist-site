@@ -1986,6 +1986,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
 
 
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
@@ -2087,6 +2099,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       typeIv: 'iv',
       typeEv: 'ev',
       typeLevel: 'level',
+      maxBvValue: 255,
       bvList: [],
       ivList: [{
         name: 'H: ',
@@ -2214,14 +2227,16 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       this.bookName = this.dataList[regionId].bookName; // this.skillList = JSON.parse(data.skillIdList);
 
       var list = JSON.parse(this.dataList[regionId].baseStats).list;
+      this.maxBvValue = Math.max.apply(Math, _toConsumableArray(list)); // max値の50%以下なら黄、25%以下なら赤
+
       var colorList = [];
 
       for (var i = 0; i < list.length; ++i) {
         var color = 'success';
 
-        if (list[i] < 50) {
+        if (list[i] <= Math.ceil(this.maxBvValue / 4)) {
           color = 'danger';
-        } else if (list[i] < 100) {
+        } else if (list[i] <= Math.ceil(this.maxBvValue / 2)) {
           color = 'warning';
         }
 
@@ -50054,7 +50069,6 @@ var render = function() {
         [
           _c(
             "b-card-body",
-            { staticClass: "m-lg-2" },
             [
               _c("Breadcrumbs"),
               _vm._v(" "),
@@ -50151,7 +50165,7 @@ var render = function() {
         [
           _c(
             "b-card-group",
-            { staticClass: "m-lg-1 text-center font-weight-bolder" },
+            { staticClass: "text-center font-weight-bolder" },
             [
               _c(
                 "b-card",
@@ -50213,20 +50227,6 @@ var render = function() {
           _vm._v(" "),
           _c(
             "b-card-group",
-            { staticClass: "m-lg-0 text-center" },
-            [
-              _c("b-card", [
-                _vm._v(
-                  "H = 体力, A = 攻撃, B =防御, C = 特攻, D = 特防, S = 素早"
-                )
-              ])
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "b-card-group",
-            { staticClass: "m-lg-0" },
             [
               _c(
                 "b-card",
@@ -50234,7 +50234,7 @@ var render = function() {
                   _c(
                     "b-card-text",
                     { staticClass: "text-center font-weight-bolder" },
-                    [_vm._v("種族値(赤:0〜49, 黄:50〜99, 緑:100〜)")]
+                    [_vm._v("種族値")]
                   ),
                   _vm._v(" "),
                   _vm._l(_vm.bvList, function(bv) {
@@ -50244,9 +50244,9 @@ var render = function() {
                       [
                         _c(
                           "b-input-group",
-                          { staticClass: "mb-xl-0" },
+                          { staticClass: "mb-xl-1" },
                           [
-                            _c("b-form", { staticClass: "mb-xl-1" }, [
+                            _c("b-form", { staticClass: "mb-xl-2" }, [
                               _vm._v(_vm._s(bv.name) + " " + _vm._s(bv.value))
                             ])
                           ],
@@ -50254,10 +50254,10 @@ var render = function() {
                         ),
                         _vm._v(" "),
                         _c("b-progress", {
-                          staticClass: "mb-lg-1",
+                          staticClass: "mb-lg-2",
                           attrs: {
                             value: bv.value,
-                            max: 255,
+                            max: _vm.maxBvValue,
                             variant: bv.color,
                             "show-value": "",
                             animated: ""
@@ -50300,7 +50300,7 @@ var render = function() {
                         _c(
                           "b-input-group",
                           [
-                            _c("b-form", { staticClass: "m-lg-0" }, [
+                            _c("b-form", { staticClass: "m-lg-1" }, [
                               _vm._v(_vm._s(iv.name))
                             ]),
                             _vm._v(" "),
@@ -50381,7 +50381,7 @@ var render = function() {
                         _c(
                           "b-input-group",
                           [
-                            _c("b-form", { staticClass: "m-lg-0" }, [
+                            _c("b-form", { staticClass: "m-lg-1" }, [
                               _vm._v(_vm._s(ev.name))
                             ]),
                             _vm._v(" "),
@@ -50455,10 +50455,10 @@ var render = function() {
                       }
                     },
                     [
-                      _c("b-form", { staticClass: "m-lg-0" }, [_vm._v("Lv:")]),
+                      _c("b-form", { staticClass: "m-lg-1" }, [_vm._v("Lv:")]),
                       _vm._v(" "),
                       _c("b-form-input", {
-                        staticClass: "col-2",
+                        staticClass: "col-3",
                         attrs: {
                           size: "sm",
                           type: "number",
@@ -50517,7 +50517,7 @@ var render = function() {
                   _vm._v(" "),
                   _c(
                     "b-card-text",
-                    { staticClass: "text-center font-weight-bolder mt-2" },
+                    { staticClass: "text-center font-weight-bolder mt-4" },
                     [_vm._v("性格(↑: 1.1倍, ↓: 0.9倍)")]
                   ),
                   _vm._v(" "),
@@ -50543,10 +50543,18 @@ var render = function() {
                   ),
                   _vm._v(" "),
                   _vm.personalityList.length !== 0
-                    ? _c("b-card-text", { staticClass: "mt-2" }, [
+                    ? _c("b-card-text", { staticClass: "mt-3" }, [
                         _vm._v("性格: " + _vm._s(_vm.selectedPersonal().text))
                       ])
-                    : _vm._e()
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _c(
+                    "b-card-text",
+                    { staticClass: "text-center font-weight-bolder mt-4" },
+                    [_vm._v("持ち物")]
+                  ),
+                  _vm._v(" "),
+                  _c("b-card-text", [_vm._v("未実装")])
                 ],
                 1
               )
@@ -50556,7 +50564,6 @@ var render = function() {
           _vm._v(" "),
           _c(
             "b-card-group",
-            { staticClass: "m-lg-0" },
             [
               _c(
                 "b-card",
