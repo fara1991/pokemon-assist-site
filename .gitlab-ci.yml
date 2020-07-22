@@ -1,0 +1,36 @@
+image: docker:latest
+
+services:
+  - docker:dind
+
+before_script:
+  - apk update
+  - apk upgrade
+  - apk add git curl bash perl docker-compose
+  - cp .env.ci .env
+
+stages:
+  - build
+  - deploy
+
+build:
+  stage: build
+  script:
+    - docker-compose up -d --build
+    - bash scripts/build.sh
+
+deploy:
+  dependencies:
+    - build
+  stage: deploy
+  script:
+    - git fetch
+    - version=`git br -a --sort=authordate | grep release/version/ | tail -n 1 | perl -pe 's/release\/version\///g; s/\*//g;'`
+    - git checkout -b release/version/$((version + 1))
+    - docker-compose up -d --build
+    - bash scripts/build.sh
+    - git add .
+    - git commit -m 'create release-branch'
+    - git push
+  only:
+    - master
