@@ -8,9 +8,15 @@ before_script:
   - apk upgrade
   - apk add git curl bash perl docker-compose
   - cp .env.ci .env
+  - git config --global user.email 'fara.gitlab.ci@gmail.com'
+  - git config --global user.name 'ci fara'
+  - git fetch
+  - version=`git branch -r --sort=authordate | grep origin/release/version/ | tail -n 1 | perl -pe 's/origin\/release\/version\///g; s/\*//g;'`
+  - new_version=$((version + 1))
 
 stages:
   - build
+  - branch
   - deploy
 
 build:
@@ -18,19 +24,35 @@ build:
   script:
     - docker-compose up -d --build
     - bash scripts/build.sh
+  cache:
+    paths:
+      - vendor
+      - node_modules
+
+create-branch:
+  stage: branch
+  script:
+    - git checkout -b release/version/$new_version
+    - docker-compose up -d --build
+    - bash scripts/build.sh
+    - git add .
+    - git commit -m 'create release-branch'
+    - git push
+  only:
+    - master
 
 deploy:
   dependencies:
     - build
   stage: deploy
   script:
-    - git fetch
-    - version=`git br -a --sort=authordate | grep release/version/ | tail -n 1 | perl -pe 's/release\/version\///g; s/\*//g;'`
-    - git checkout -b release/version/$((version + 1))
-    - docker-compose up -d --build
-    - bash scripts/build.sh
-    - git add .
-    - git commit -m 'create release-branch'
-    - git push
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+    - cat $SSH_PRIVATE_KEY | tr -d '\r' > ~/.ssh/id_ed25519
+    - chmod 400 ~/.ssh/id_ed25519
+    - echo -e 'Host *\n\tStrictHostKeyChecking no\n\n' > ~/.ssh/config
+    - ssh ubuntu@$IP_ADDRESS -i ~/.ssh/id_ed25519 "cd ~/pokemon-assist-site; git checkout .; git fetch;"
+    - ssh ubuntu@$IP_ADDRESS -i ~/.ssh/id_ed25519 "cd ~/pokemon-assist-site; git checkout origin/release/version/$new_version;"
+    - ssh ubuntu@$IP_ADDRESS -i ~/.ssh/id_ed25519 "bash ~/pokemon-assist-site/scripts/build.sh"
   only:
     - master
