@@ -67,7 +67,7 @@ deploy:
     - chmod 400 ~/.ssh/id_ed25519
     - echo -e 'Host *\n\tStrictHostKeyChecking no\n\n' > ~/.ssh/config
     - ssh ubuntu@$IP_ADDRESS -i ~/.ssh/id_ed25519 "cd ~/pokemon-assist-site; git checkout .; git clean -df .; git fetch;"
-    - ssh ubuntu@$IP_ADDRESS -i ~/.ssh/id_ed25519 "cd ~/pokemon-assist-site; git checkout origin/release/version/$new_version;"
+    - ssh ubuntu@$IP_ADDRESS -i ~/.ssh/id_ed25519 "cd ~/pokemon-assist-site; git checkout origin/release/version/$version;"
     - ssh ubuntu@$IP_ADDRESS -i ~/.ssh/id_ed25519 "bash ~/pokemon-assist-site/scripts/build.sh"
   cache:
     paths:
