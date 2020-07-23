@@ -38,6 +38,10 @@ create-branch:
     - git add .
     - git commit -m 'create release-branch'
     - git push
+  cache:
+    paths:
+      - vendor
+      - node_modules
   only:
     - master
 
@@ -54,5 +58,9 @@ deploy:
     - ssh ubuntu@$IP_ADDRESS -i ~/.ssh/id_ed25519 "cd ~/pokemon-assist-site; git checkout .; git clean -df .; git fetch;"
     - ssh ubuntu@$IP_ADDRESS -i ~/.ssh/id_ed25519 "cd ~/pokemon-assist-site; git checkout origin/release/version/$new_version;"
     - ssh ubuntu@$IP_ADDRESS -i ~/.ssh/id_ed25519 "bash ~/pokemon-assist-site/scripts/build.sh"
+  cache:
+    paths:
+      - vendor
+      - node_modules
   only:
     - master
