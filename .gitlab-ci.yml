@@ -47,7 +47,7 @@ create-branch:
     - bash scripts/build.sh
     - git add .
     - git commit -m 'create release-branch'
-    - git push
+    - git push --set-upstream origin release/version/$new_version
   cache:
     paths:
       - vendor
