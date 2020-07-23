@@ -12,7 +12,7 @@ before_script:
   - git config --global user.name $DEPLOY_USERNAME
   - git remote set-url origin https://$DEPLOY_USERNAME:$DEPLOY_PASSWORD@gitlab.com/game_Fara/pokemon-assist-site.git
   - git fetch
-  - version=`git branch -r --sort=authordate | grep origin/release/version/ | tail -n 1 | perl -pe 's/origin\/release\/version\///g; s/\*//g;'`
+  - version=`git branch -r --sort=authordate | grep origin/release/version/ | tail -n 1 | perl -pe 's/origin\/release\/version\///g; s/\*//g; s/ //g;'`
   - new_version=$((version + 1))
 
 stages:
