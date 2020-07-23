@@ -4,6 +4,10 @@
 ## gitlab-ci
 new_branch merge request. If master merge, after auto deploy
 
+## task management
+[ClickUp](https://app.clickup.com)
+future -> [Space](https://jetbrains.com/ja-jp/space/)
+
 ## SetUp
 
 ```
