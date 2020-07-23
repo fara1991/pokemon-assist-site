@@ -34,7 +34,7 @@ build-test:
   script:
     - docker-compose up -d --build
     - bash scripts/build-local.sh
-  cahe:
+  cache:
     paths:
       - vendor
       - node_modules
