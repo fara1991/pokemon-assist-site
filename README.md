@@ -1,3 +1,9 @@
+# open site
+[ポケモン バトルデータ](https://pokemon.gamefara.net)
+
+## gitlab-ci
+new_branch merge request. If master merge, after auto deploy
+
 ## SetUp
 
 ```
@@ -6,50 +12,43 @@ chmod 777 -R storage
 chmod 777 -R bootstrap/cache
 docker-compose up -d --build
 docker-compose exec workspace bash
+php artisan key:generate
 ```
 
-## npm error resolve
+## if npm install error
 
 ```
 nslookup registry.npmjs.org
 sudo vim /etc/hosts
 ```
 
-## in laravel container
-
-```
-php artisan key:generate
-```
-
 ### create api
-
 ```
-php artisan make:migration (ファイル名) --create=(テーブル名)
-php artisan make:controller (コントローラ名) --resource --model=(モデル名)
+php artisan make:migration (file name) --create=(table name)
+php artisan make:controller (controller name) --resource --model=(model name)
 ```
 
 ### axios process list
-
 ```
 method => uri
-index() => axios.get('/(モデル名)')
-create() => axios.get('/(モデル名)/create')
-store() => axios.post('/(モデル名)')
-show('(パラメータ)') => axios.get('/(モデル名)/(パラメータ)')
-edit('(パラメータ)') => axios.get('/(モデル名)/(パラメータ)/edit')
-update('(パラメータ)') => axios.put('(モデル名)/(パラメータ)')
-delete('(パラメータ)') => axios.delete('(モデル名)/(パラメータ)')
+index() => axios.get('/(model name)')
+create() => axios.get('/(model name)/create')
+store() => axios.post('/(model name)')
+show('(parameter)') => axios.get('/(model name)/(parameter)')
+edit('(parameter)') => axios.get('/(model name)/(parameter)/edit')
+update('(parameter)') => axios.put('(model name)/(parameter)')
+delete('(parameter)') => axios.delete('(model name)/(parameter)')
 ```
 
 ## Database
 
 ```
-マスタデータの登録 => Laravel Seeder
-テストデータの登録 => Laravel Factories
-ユーザデータテーブル作成 => Laravel Migration
+register master data => Laravel Seeder
+register test data => Laravel Factories
+create table => Laravel Migration
 ```
 
-# Laravel 公式Document
+# Laravel Official Document
 
 <p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
 
