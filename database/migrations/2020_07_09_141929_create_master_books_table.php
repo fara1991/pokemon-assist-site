@@ -21,10 +21,10 @@ class CreateMasterBooksTable extends Migration
             $table->unsignedInteger('book_no')->comment('図鑑番号');
             $table->string('pokemon_name')->comment('ポケモンの名前');
             $table->string('pokemon_region_name')->comment('ポケモン別フォーム名');
+            $table->unsignedInteger('region_id')->comment('リージョンID');
             $table->string('region')->comment('リージョン名');
             $table->json('skill_ids')->comment('技一覧');
             $table->json('base_stats')->comment('種族値一覧');
-            $table->boolean('is_display')->comment('初期表示するかどうか');
         });
     }
 

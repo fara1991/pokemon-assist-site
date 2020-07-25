@@ -27,8 +27,7 @@ class BookListController extends Controller
             ->newQuery()
             ->where('version_id', $request->versionId)
             ->where('book_id', $request->bookId)
-            ->where('is_display', true)
-            ->select($model->camelColumnNameList(['id', 'book_no', 'pokemon_name']))
+            ->select($model->camelColumnNameList())
             ->get();
 
         return response()->json($list);

@@ -1,6 +1,6 @@
 <template>
-    <div v-if="!isBookLoad || !isPersonalLoad" class="text-center">
-        <b-spinner></b-spinner>
+    <div v-if="!finishLoad" class="text-center">
+        <b-spinner variant="primary"></b-spinner>
     </div>
     <div v-else>
         <b-card-group class="text-center font-weight-bolder">
@@ -8,10 +8,8 @@
                 <b-card-text>図鑑No.{{bookNo}} {{pokemonName}}</b-card-text>
                 <b-container>
                     <b-row>
-                        <b-col v-if="dataList.length !== 1" v-for="d in dataList" :key="d.regionId">
-                            <b-button size="sm" variant="primary" @click="regionChange(d.regionId)">
-                                {{d.region}}
-                            </b-button>
+                        <b-col v-if="regionList.length !== 1" v-for="d in regionList" :key="d.regionId">
+                            <b-button size="sm" variant="primary" @click="regionChange(d.regionId)">{{d.region}}</b-button>
                         </b-col>
                     </b-row>
                 </b-container>
@@ -29,18 +27,18 @@
             </b-card>
             <b-card>
                 <b-card-text class="text-center font-weight-bolder">個体値(0 〜 31)</b-card-text>
-                <div size="sm" v-for="iv in ivList" :key="iv.id" @input="iv.value=validateNumber(iv.value, typeIv)" onkeydown="return !['.', 'e', 'E', '-', '+'].includes(event.key)">
+                <div size="sm" v-for="iv in ivList" :key="iv.id" @input="iv.value=book.validateNumber(iv.value, book.typeIv)" onkeydown="return !['.', 'e', 'E', '-', '+'].includes(event.key)">
                     <b-input-group>
                         <b-form class="m-lg-1">{{iv.name}}</b-form>
                         <b-form-input size="sm" class="col-3" type="number" v-model.number="iv.value" min="0" max="31" step="1"></b-form-input>
-                        <div >{{ivStatusName(iv.value)}}</div>
+                        <div >{{book.ivStatusName(iv.value)}}</div>
                     </b-input-group>
                     <b-form-input size="sm" v-model.number="iv.value" type="range" :max="31" animated></b-form-input>
                 </div>
             </b-card>
             <b-card>
                 <b-card-text class="text-center font-weight-bolder">努力値(0 〜 252, 計510)</b-card-text>
-                <div size="sm" v-for="ev in evList" :key="ev.id" @input="ev.value=validateNumber(ev.value, typeEv)" onkeydown="return !['.', 'e', 'E', '-', '+'].includes(event.key)">
+                <div size="sm" v-for="ev in evList" :key="ev.id" @input="ev.value=book.validateNumber(ev.value, book.typeEv)" onkeydown="return !['.', 'e', 'E', '-', '+'].includes(event.key)">
                     <b-input-group>
                         <b-form class="m-lg-1">{{ev.name}}</b-form>
                         <b-form-input size="sm" class="col-3" type="number" v-model.number="ev.value" min="0" max="252" step="4"></b-form-input>
@@ -50,7 +48,7 @@
             </b-card>
             <b-card>
                 <b-card-text class="text-center font-weight-bolder">レベル</b-card-text>
-                <b-input-group @input="level=validateNumber(level, typeLevel)" onkeydown="return !['.', 'e', 'E', '-', '+'].includes(event.key)">
+                <b-input-group @input="level=book.validateNumber(level, book.typeLevel)" onkeydown="return !['.', 'e', 'E', '-', '+'].includes(event.key)">
                     <b-form class="m-lg-1">Lv:</b-form>
                     <b-form-input size="sm" class="col-3" type="number" v-model.number="level" min="1" max="100" step="1"></b-form-input>
                     <b-button size="sm" @click="level=50">50</b-button>
@@ -60,9 +58,9 @@
 
                 <b-card-text class="text-center font-weight-bolder mt-4">性格(↑: 1.1倍, ↓: 0.9倍)</b-card-text>
                 <b-form-select v-model="personalId">
-                    <b-form-select-option v-for="personal in personalityList" :key="personal.id" :value="personal.id">{{personal.text}}</b-form-select-option>
+                    <b-form-select-option v-for="p in personalList" :key="p.id" :value="p.id">{{p.text}}</b-form-select-option>
                 </b-form-select>
-                <b-card-text class="mt-3" v-if="personalityList.length !== 0">性格: {{selectedPersonal().text}}</b-card-text>
+                <b-card-text class="mt-3" v-if="personalList.length !== 0">性格: {{selectedPersonal().text}}</b-card-text>
 
                 <b-card-text class="text-center font-weight-bolder mt-4">持ち物</b-card-text>
                 <b-card-text>未実装</b-card-text>
@@ -82,21 +80,19 @@
 
 <script>
     import axios from 'axios';
+    import constBook from '../../../const/book';
 
     export default {
         name: "Detail",
         data() {
             return {
-                isBookLoad: false,
-                isPersonalLoad: false,
-                dataList: [],
+                book: constBook,
+                finishLoad: false,
+                regionList: [],
                 bookNo: this.$route.query.book_no,
                 pokemonName: '',
                 bookName: '',
                 skillList: [],
-                typeIv: 'iv',
-                typeEv: 'ev',
-                typeLevel: 'level',
                 maxBvValue: 255,
                 bvList: [],
                 ivList: [
@@ -116,7 +112,7 @@
                     {name: 'S: ', value: 0},
                 ],
                 level: 50,
-                personalityList: [],
+                personalList: [],
                 personalId: 1,
             }
         },
@@ -124,42 +120,40 @@
             async loadPokemonDetail() {
                 // 取得するまで待機
                 await axios.get(`/api/book-list/${this.bookNo}`).then(res => {
-                    this.dataList = res.data;
-                    for (let i = 0; i < this.dataList.length; ++i) {
-                        this.dataList[i]['regionId'] = i;
+                    this.regionList = res.data;
+                    for (let i = 0; i < this.regionList.length; ++i) {
+                        this.regionList[i]['regionId'] = i;
                     }
-
-                    this.regionChange();
-                    this.isBookLoad = true;
                 });
+                this.regionChange(this.$route.query.region_id - 1);
             },
-            async loadPersonality() {
+            loadPersonal() {
                 let list = [];
                 if (localStorage.hasOwnProperty('personality_list')) {
                     list = JSON.parse(localStorage.getItem('personality_list'));
                 } else {
-                    // 取得するまで待機
-                    await axios.get('/api/personality-list').then(res => {
+                    axios.get('/api/personality-list').then(res => {
                         list = res.data;
                         localStorage.setItem('personality_list', JSON.stringify(res.data));
                     });
                 }
 
+                let l = [];
                 list.forEach(p => {
                     let text = `${p.name}(${p.description})`;
-                    this.personalityList.push({
+                    l.push({
                         id: p.personalId,
                         text: text,
                         value: JSON.parse(p.statusMagnifications),
                     });
                 });
-                this.isPersonalLoad = true;
+                this.personalList = l;
             },
             regionChange(regionId = 0) {
-                this.pokemonName = this.dataList[regionId].pokemonRegionName;
-                this.bookName = this.dataList[regionId].bookName;
+                this.pokemonName = this.regionList[regionId].pokemonRegionName;
+                this.bookName = this.regionList[regionId].bookName;
                 // this.skillList = JSON.parse(data.skillIdList);
-                let list = JSON.parse(this.dataList[regionId].baseStats).list;
+                let list = JSON.parse(this.regionList[regionId].baseStats).list;
                 this.maxBvValue = Math.max(...list);
 
                 // max値の50%以下なら黄、25%以下なら赤
@@ -182,60 +176,22 @@
                     {name: 'S: ', value: list[5], color: colorList[5]},
                 ];
             },
-            validateNumber(value, type) {
-                let minValue = 0;
-                let maxValue = 0;
-                if (type === this.typeIv) {
-                    minValue = 0;
-                    maxValue = 31;
-                } else if (type === this.typeEv) {
-                    minValue = 0;
-                    maxValue = 252;
-                } else if (type === this.typeLevel) {
-                    minValue = 1;
-                    maxValue = 100;
-                } else {
-                    alert('Warning: 存在しないType');
-                }
-
-                if (value < minValue) {
-                    value = minValue;
-                } else if (value > maxValue) {
-                    value = maxValue;
-                }
-                return value;
-            },
-
             back() {
                 this.$router.back();
             },
             selectedPersonal() {
-                return this.personalityList[this.personalId - 1];
+                return this.personalList[this.personalId - 1];
             },
-            ivStatusName(value) {
-                if (value === 0) {
-                    return 'ダメかも';
-                } else if (1 <= value && value <= 15) {
-                    return 'まあまあ';
-                } else if (16 <= value && value <= 25) {
-                    return 'かなりいい';
-                } else if (26 <= value && value <= 29) {
-                    return 'すごくいい';
-                } else if (value === 30) {
-                    return 'すばらしい';
-                } else if (value === 31) {
-                    return 'さいこう(きたえた!)';
-                } else {
-                    return 'undefined';
-                }
+            async initialize() {
+                await this.loadPokemonDetail();
+                this.loadPersonal();
+                this.finishLoad = true;
             }
         },
         created() {
-            this.loadPokemonDetail();
-            this.loadPersonality();
+            this.initialize();
         },
         computed: {
-
             resultStatus() {
                 // hp
                 let status = '';
