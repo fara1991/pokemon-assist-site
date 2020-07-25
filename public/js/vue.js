@@ -1984,6 +1984,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _const_book__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../const/book */ "./resources/js/const/book.js");
 
 
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
@@ -2082,23 +2083,19 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
+
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Detail",
   data: function data() {
     return {
-      isBookLoad: false,
-      isPersonalLoad: false,
-      dataList: [],
+      book: _const_book__WEBPACK_IMPORTED_MODULE_2__["default"],
+      finishLoad: false,
+      regionList: [],
       bookNo: this.$route.query.book_no,
       pokemonName: '',
       bookName: '',
       skillList: [],
-      typeIv: 'iv',
-      typeEv: 'ev',
-      typeLevel: 'level',
       maxBvValue: 255,
       bvList: [],
       ivList: [{
@@ -2140,7 +2137,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         value: 0
       }],
       level: 50,
-      personalityList: [],
+      personalList: [],
       personalId: 1
     };
   },
@@ -2155,18 +2152,17 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _context.next = 2;
                 return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/api/book-list/".concat(_this.bookNo)).then(function (res) {
-                  _this.dataList = res.data;
+                  _this.regionList = res.data;
 
-                  for (var i = 0; i < _this.dataList.length; ++i) {
-                    _this.dataList[i]['regionId'] = i;
+                  for (var i = 0; i < _this.regionList.length; ++i) {
+                    _this.regionList[i]['regionId'] = i;
                   }
-
-                  _this.regionChange();
-
-                  _this.isBookLoad = true;
                 });
 
               case 2:
+                _this.regionChange(_this.$route.query.region_id - 1);
+
+              case 3:
               case "end":
                 return _context.stop();
             }
@@ -2174,59 +2170,35 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee);
       }))();
     },
-    loadPersonality: function loadPersonality() {
-      var _this2 = this;
+    loadPersonal: function loadPersonal() {
+      var list = [];
 
-      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
-        var list;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
-          while (1) {
-            switch (_context2.prev = _context2.next) {
-              case 0:
-                list = [];
+      if (localStorage.hasOwnProperty('personality_list')) {
+        list = JSON.parse(localStorage.getItem('personality_list'));
+      } else {
+        axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/api/personality-list').then(function (res) {
+          list = res.data;
+          localStorage.setItem('personality_list', JSON.stringify(res.data));
+        });
+      }
 
-                if (!localStorage.hasOwnProperty('personality_list')) {
-                  _context2.next = 5;
-                  break;
-                }
-
-                list = JSON.parse(localStorage.getItem('personality_list'));
-                _context2.next = 7;
-                break;
-
-              case 5:
-                _context2.next = 7;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/api/personality-list').then(function (res) {
-                  list = res.data;
-                  localStorage.setItem('personality_list', JSON.stringify(res.data));
-                });
-
-              case 7:
-                list.forEach(function (p) {
-                  var text = "".concat(p.name, "(").concat(p.description, ")");
-
-                  _this2.personalityList.push({
-                    id: p.personalId,
-                    text: text,
-                    value: JSON.parse(p.statusMagnifications)
-                  });
-                });
-                _this2.isPersonalLoad = true;
-
-              case 9:
-              case "end":
-                return _context2.stop();
-            }
-          }
-        }, _callee2);
-      }))();
+      var l = [];
+      list.forEach(function (p) {
+        var text = "".concat(p.name, "(").concat(p.description, ")");
+        l.push({
+          id: p.personalId,
+          text: text,
+          value: JSON.parse(p.statusMagnifications)
+        });
+      });
+      this.personalList = l;
     },
     regionChange: function regionChange() {
       var regionId = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
-      this.pokemonName = this.dataList[regionId].pokemonRegionName;
-      this.bookName = this.dataList[regionId].bookName; // this.skillList = JSON.parse(data.skillIdList);
+      this.pokemonName = this.regionList[regionId].pokemonRegionName;
+      this.bookName = this.regionList[regionId].bookName; // this.skillList = JSON.parse(data.skillIdList);
 
-      var list = JSON.parse(this.dataList[regionId].baseStats).list;
+      var list = JSON.parse(this.regionList[regionId].baseStats).list;
       this.maxBvValue = Math.max.apply(Math, _toConsumableArray(list)); // max値の50%以下なら黄、25%以下なら赤
 
       var colorList = [];
@@ -2269,58 +2241,39 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         color: colorList[5]
       }];
     },
-    validateNumber: function validateNumber(value, type) {
-      var minValue = 0;
-      var maxValue = 0;
-
-      if (type === this.typeIv) {
-        minValue = 0;
-        maxValue = 31;
-      } else if (type === this.typeEv) {
-        minValue = 0;
-        maxValue = 252;
-      } else if (type === this.typeLevel) {
-        minValue = 1;
-        maxValue = 100;
-      } else {
-        alert('Warning: 存在しないType');
-      }
-
-      if (value < minValue) {
-        value = minValue;
-      } else if (value > maxValue) {
-        value = maxValue;
-      }
-
-      return value;
-    },
     back: function back() {
       this.$router.back();
     },
     selectedPersonal: function selectedPersonal() {
-      return this.personalityList[this.personalId - 1];
+      return this.personalList[this.personalId - 1];
     },
-    ivStatusName: function ivStatusName(value) {
-      if (value === 0) {
-        return 'ダメかも';
-      } else if (1 <= value && value <= 15) {
-        return 'まあまあ';
-      } else if (16 <= value && value <= 25) {
-        return 'かなりいい';
-      } else if (26 <= value && value <= 29) {
-        return 'すごくいい';
-      } else if (value === 30) {
-        return 'すばらしい';
-      } else if (value === 31) {
-        return 'さいこう(きたえた!)';
-      } else {
-        return 'undefined';
-      }
+    initialize: function initialize() {
+      var _this2 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.next = 2;
+                return _this2.loadPokemonDetail();
+
+              case 2:
+                _this2.loadPersonal();
+
+                _this2.finishLoad = true;
+
+              case 4:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2);
+      }))();
     }
   },
   created: function created() {
-    this.loadPokemonDetail();
-    this.loadPersonality();
+    this.initialize();
   },
   computed: {
     resultStatus: function resultStatus() {
@@ -2358,6 +2311,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _const_string__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../const/string */ "./resources/js/const/string.js");
 //
 //
 //
@@ -2375,6 +2329,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Calculation",
@@ -2384,29 +2340,75 @@ __webpack_require__.r(__webpack_exports__);
       bookList: [],
       finishLoad: false,
       maxRow: 5,
-      invalidId: -1
+      invalidId: -1,
+      sort: 'No',
+      tableHeader: [{
+        key: 'No',
+        sortable: true
+      }, {
+        key: 'なまえ',
+        sortable: true
+      }, {
+        key: 'たいりょく',
+        sortable: true
+      }, {
+        key: 'こうげき',
+        sortable: true
+      }, {
+        key: 'ぼうぎょ',
+        sortable: true
+      }, {
+        key: 'とくこう',
+        sortable: true
+      }, {
+        key: 'とくぼう',
+        sortable: true
+      }, {
+        key: 'すばやさ',
+        sortable: true
+      }]
     };
   },
   methods: {
     loadBookList: function loadBookList() {
-      var _this = this;
+      var list = [];
 
       if (localStorage.hasOwnProperty('book_list')) {
-        this.bookList = JSON.parse(localStorage.getItem('book_list'));
+        list = JSON.parse(localStorage.getItem('book_list'));
       } else {
         axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/api/book-list?versionId=8&bookId=1').then(function (res) {
-          _this.bookList = res.data;
+          list = res.data;
           localStorage.setItem('book_list', JSON.stringify(res.data));
         });
       }
 
+      var l = [];
+      list.forEach(function (b) {
+        var items = [];
+        var status = JSON.parse(b.baseStats).list;
+        items['No'] = 'No.' + b.bookNo;
+        items['なまえ'] = {
+          linkNo: b.bookNo,
+          regionId: b.regionId,
+          name: b.pokemonRegionName
+        };
+        items['たいりょく'] = status[0];
+        items['こうげき'] = status[1];
+        items['ぼうぎょ'] = status[2];
+        items['とくこう'] = status[3];
+        items['とくぼう'] = status[4];
+        items['すばやさ'] = status[5];
+        l.push(items);
+      });
+      this.bookList = l;
       this.finishLoad = true;
     },
-    go: function go(bookNo) {
+    go: function go(bookNo, regionId) {
       this.$router.push({
         name: 'calculationDetail',
         query: {
-          book_no: bookNo
+          book_no: bookNo,
+          region_id: regionId
         }
       });
     }
@@ -2417,47 +2419,33 @@ __webpack_require__.r(__webpack_exports__);
   computed: {
     // 算出プロパティ
     filteredList: function filteredList() {
-      var _this2 = this;
+      var _this = this;
 
       var filteredList = [];
-      var row = [];
       var filterId = 0;
       this.bookList.forEach(function (book) {
-        var properties = ['bookNo', 'pokemonName'];
-
-        for (var _i = 0, _properties = properties; _i < _properties.length; _i++) {
-          var propertyName = _properties[_i];
+        for (var _i = 0, _Object$keys = Object.keys(book); _i < _Object$keys.length; _i++) {
+          var propertyName = _Object$keys[_i];
 
           // 部分一致のものだけ検索結果に追加
-          if (String(book[propertyName]).indexOf(_this2.keyword) === _this2.invalidId) {
+          if (propertyName === 'なまえ') {
+            var hiragana = _const_string__WEBPACK_IMPORTED_MODULE_1__["default"].katakanaToHiragana(book[propertyName].name);
+            var katakana = _const_string__WEBPACK_IMPORTED_MODULE_1__["default"].hiraganaToKatakana(book[propertyName].name);
+
+            if (String(hiragana).indexOf(_this.keyword) === _this.invalidId && String(katakana).indexOf(_this.keyword) === _this.invalidId) {
+              continue;
+            }
+          } else if (String(book[propertyName]).indexOf(_this.keyword) === _this.invalidId) {
             continue;
           } // filter後の連番を割り振り
 
 
           book['filterId'] = filterId;
           filterId++;
-          row.push(book);
+          filteredList.push(book);
           break;
         }
-
-        if (row.length === _this2.maxRow) {
-          filteredList.push(row);
-          row = [];
-        }
-      }); // 1行内のカラム数が足りなければ追加
-
-      if (row.length !== 0) {
-        while (row.length !== this.maxRow) {
-          var book = [];
-          book['filterId'] = filterId;
-          filterId++;
-          row.push(book);
-        }
-
-        filteredList.push(row);
-      }
-
-      console.log(filteredList);
+      });
       return filteredList;
     }
   }
@@ -44773,7 +44761,26 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/*#ps {*/\n/*    font-family: 'Avenir', Helvetica, Arial, sans-serif;*/\n/*    -webkit-font-smoothing: antialiased;*/\n/*    -moz-osx-font-smoothing: grayscale;*/\n/*    text-align: center;*/\n/*    color: #2c3e50;*/\n/*    margin-top: 60px;*/\n/*}*/\n.ps{\n    position: relative;\n    height: 700px;\n}\n", ""]);
+exports.push([module.i, "\n.ps{\n    position: relative;\n    max-height: 700px;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/swsh/calculation/index.vue?vue&type=style&index=0&id=114771f5&scoped=true&lang=css&":
+/*!***********************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--5-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--5-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/swsh/calculation/index.vue?vue&type=style&index=0&id=114771f5&scoped=true&lang=css& ***!
+  \***********************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.ps[data-v-114771f5] {\n    position: relative;\n    max-height: 600px;\n}\n", ""]);
 
 // exports
 
@@ -49288,6 +49295,36 @@ if(false) {}
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/swsh/calculation/index.vue?vue&type=style&index=0&id=114771f5&scoped=true&lang=css&":
+/*!***************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--5-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--5-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/swsh/calculation/index.vue?vue&type=style&index=0&id=114771f5&scoped=true&lang=css& ***!
+  \***************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../../node_modules/css-loader??ref--5-1!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/src??ref--5-2!../../../../../node_modules/vue-loader/lib??vue-loader-options!./index.vue?vue&type=style&index=0&id=114771f5&scoped=true&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/swsh/calculation/index.vue?vue&type=style&index=0&id=114771f5&scoped=true&lang=css&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/lib/addStyles.js":
 /*!****************************************************!*\
   !*** ./node_modules/style-loader/lib/addStyles.js ***!
@@ -50158,8 +50195,13 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return !_vm.isBookLoad || !_vm.isPersonalLoad
-    ? _c("div", { staticClass: "text-center" }, [_c("b-spinner")], 1)
+  return !_vm.finishLoad
+    ? _c(
+        "div",
+        { staticClass: "text-center" },
+        [_c("b-spinner", { attrs: { variant: "primary" } })],
+        1
+      )
     : _c(
         "div",
         [
@@ -50184,8 +50226,8 @@ var render = function() {
                     [
                       _c(
                         "b-row",
-                        _vm._l(_vm.dataList, function(d) {
-                          return _vm.dataList.length !== 1
+                        _vm._l(_vm.regionList, function(d) {
+                          return _vm.regionList.length !== 1
                             ? _c(
                                 "b-col",
                                 { key: d.regionId },
@@ -50200,13 +50242,7 @@ var render = function() {
                                         }
                                       }
                                     },
-                                    [
-                                      _vm._v(
-                                        "\n                            " +
-                                          _vm._s(d.region) +
-                                          "\n                        "
-                                      )
-                                    ]
+                                    [_vm._v(_vm._s(d.region))]
                                   )
                                 ],
                                 1
@@ -50292,7 +50328,10 @@ var render = function() {
                         },
                         on: {
                           input: function($event) {
-                            iv.value = _vm.validateNumber(iv.value, _vm.typeIv)
+                            iv.value = _vm.book.validateNumber(
+                              iv.value,
+                              _vm.book.typeIv
+                            )
                           }
                         }
                       },
@@ -50323,7 +50362,7 @@ var render = function() {
                             }),
                             _vm._v(" "),
                             _c("div", [
-                              _vm._v(_vm._s(_vm.ivStatusName(iv.value)))
+                              _vm._v(_vm._s(_vm.book.ivStatusName(iv.value)))
                             ])
                           ],
                           1
@@ -50373,7 +50412,10 @@ var render = function() {
                         },
                         on: {
                           input: function($event) {
-                            ev.value = _vm.validateNumber(ev.value, _vm.typeEv)
+                            ev.value = _vm.book.validateNumber(
+                              ev.value,
+                              _vm.book.typeEv
+                            )
                           }
                         }
                       },
@@ -50447,9 +50489,9 @@ var render = function() {
                       },
                       on: {
                         input: function($event) {
-                          _vm.level = _vm.validateNumber(
+                          _vm.level = _vm.book.validateNumber(
                             _vm.level,
-                            _vm.typeLevel
+                            _vm.book.typeLevel
                           )
                         }
                       }
@@ -50532,17 +50574,17 @@ var render = function() {
                         expression: "personalId"
                       }
                     },
-                    _vm._l(_vm.personalityList, function(personal) {
+                    _vm._l(_vm.personalList, function(p) {
                       return _c(
                         "b-form-select-option",
-                        { key: personal.id, attrs: { value: personal.id } },
-                        [_vm._v(_vm._s(personal.text))]
+                        { key: p.id, attrs: { value: p.id } },
+                        [_vm._v(_vm._s(p.text))]
                       )
                     }),
                     1
                   ),
                   _vm._v(" "),
-                  _vm.personalityList.length !== 0
+                  _vm.personalList.length !== 0
                     ? _c("b-card-text", { staticClass: "mt-3" }, [
                         _vm._v("性格: " + _vm._s(_vm.selectedPersonal().text))
                       ])
@@ -50635,61 +50677,66 @@ var render = function() {
     : _c(
         "div",
         [
-          _c(
-            "b-container",
-            { attrs: { fluid: "" } },
-            [
-              _c("b-input", {
-                staticClass: "mb-4",
-                attrs: { placeholder: "図鑑IDかポケモン名で検索" },
-                model: {
-                  value: _vm.keyword,
-                  callback: function($$v) {
-                    _vm.keyword = $$v
+          _c("b-input", {
+            staticClass: "mb-4",
+            attrs: { placeholder: "図鑑IDかポケモン名で検索" },
+            model: {
+              value: _vm.keyword,
+              callback: function($$v) {
+                _vm.keyword = $$v
+              },
+              expression: "keyword"
+            }
+          }),
+          _vm._v(" "),
+          _c("perfect-scrollbar", [
+            _c(
+              "p",
+              [
+                _c("b-table", {
+                  attrs: {
+                    fields: _vm.tableHeader,
+                    items: _vm.filteredList,
+                    "sort-by": _vm.sort,
+                    striped: "",
+                    small: ""
                   },
-                  expression: "keyword"
-                }
-              }),
-              _vm._v(" "),
-              _vm._l(this.filteredList, function(bookRow) {
-                return _c(
-                  "b-row",
-                  { key: bookRow.id },
-                  _vm._l(bookRow, function(book) {
-                    return _c(
-                      "b-col",
-                      { key: book.filterId },
-                      [
-                        book.id !== undefined
-                          ? _c(
-                              "b-link",
-                              {
-                                on: {
-                                  click: function($event) {
-                                    return _vm.go(book.bookNo)
-                                  }
+                  on: {
+                    "update:sortBy": function($event) {
+                      _vm.sort = $event
+                    },
+                    "update:sort-by": function($event) {
+                      _vm.sort = $event
+                    }
+                  },
+                  scopedSlots: _vm._u([
+                    {
+                      key: "cell(なまえ)",
+                      fn: function(data) {
+                        return [
+                          _c(
+                            "b-link",
+                            {
+                              on: {
+                                click: function($event) {
+                                  return _vm.go(
+                                    data.value.linkNo,
+                                    data.value.regionId
+                                  )
                                 }
-                              },
-                              [
-                                _vm._v(
-                                  "No." +
-                                    _vm._s(book.bookNo) +
-                                    " " +
-                                    _vm._s(book.pokemonName)
-                                )
-                              ]
-                            )
-                          : void 0
-                      ],
-                      2
-                    )
-                  }),
-                  1
-                )
-              })
-            ],
-            2
-          )
+                              }
+                            },
+                            [_vm._v(_vm._s(data.value.name))]
+                          )
+                        ]
+                      }
+                    }
+                  ])
+                })
+              ],
+              1
+            )
+          ])
         ],
         1
       )
@@ -50767,7 +50814,7 @@ var render = function() {
             }
           }
         },
-        [_vm._v("各種ステータスランキング(作成中)")]
+        [_vm._v("ランキング(作成中)")]
       ),
       _vm._v(" "),
       _c(
@@ -68732,6 +68779,89 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/const/book.js":
+/*!************************************!*\
+  !*** ./resources/js/const/book.js ***!
+  \************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ({
+  typeIv: 'iv',
+  typeEv: 'ev',
+  typeLevel: 'level',
+  ivStatusName: function ivStatusName(value) {
+    if (value === 0) {
+      return 'ダメかも';
+    } else if (1 <= value && value <= 15) {
+      return 'まあまあ';
+    } else if (16 <= value && value <= 25) {
+      return 'かなりいい';
+    } else if (26 <= value && value <= 29) {
+      return 'すごくいい';
+    } else if (value === 30) {
+      return 'すばらしい';
+    } else if (value === 31) {
+      return 'さいこう(きたえた!)';
+    } else {
+      return 'undefined';
+    }
+  },
+  validateNumber: function validateNumber(value, type) {
+    var minValue = 0;
+    var maxValue = 0;
+
+    if (type === this.typeIv) {
+      minValue = 0;
+      maxValue = 31;
+    } else if (type === this.typeEv) {
+      minValue = 0;
+      maxValue = 252;
+    } else if (type === this.typeLevel) {
+      minValue = 1;
+      maxValue = 100;
+    }
+
+    if (value < minValue) {
+      value = minValue;
+    } else if (value > maxValue) {
+      value = maxValue;
+    }
+
+    return value;
+  }
+});
+
+/***/ }),
+
+/***/ "./resources/js/const/string.js":
+/*!**************************************!*\
+  !*** ./resources/js/const/string.js ***!
+  \**************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ({
+  hiraganaToKatakana: function hiraganaToKatakana(word) {
+    return word.replace(/[\u3041-\u3096]/g, function (match) {
+      var chr = match.charCodeAt(0) + 0x60;
+      return String.fromCharCode(chr);
+    });
+  },
+  katakanaToHiragana: function katakanaToHiragana(word) {
+    return word.replace(/[\u30a1-\u30f6]/g, function (match) {
+      var chr = match.charCodeAt(0) - 0x60;
+      return String.fromCharCode(chr);
+    });
+  }
+});
+
+/***/ }),
+
 /***/ "./resources/js/router/index.js":
 /*!**************************************!*\
   !*** ./resources/js/router/index.js ***!
@@ -69099,7 +69229,9 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _index_vue_vue_type_template_id_114771f5_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index.vue?vue&type=template&id=114771f5&scoped=true& */ "./resources/js/views/swsh/calculation/index.vue?vue&type=template&id=114771f5&scoped=true&");
 /* harmony import */ var _index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./index.vue?vue&type=script&lang=js& */ "./resources/js/views/swsh/calculation/index.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* empty/unused harmony star reexport *//* harmony import */ var _index_vue_vue_type_style_index_0_id_114771f5_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./index.vue?vue&type=style&index=0&id=114771f5&scoped=true&lang=css& */ "./resources/js/views/swsh/calculation/index.vue?vue&type=style&index=0&id=114771f5&scoped=true&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
 
 
 
@@ -69107,7 +69239,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* normalize component */
 
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
   _index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
   _index_vue_vue_type_template_id_114771f5_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
   _index_vue_vue_type_template_id_114771f5_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
@@ -69136,6 +69268,22 @@ component.options.__file = "resources/js/views/swsh/calculation/index.vue"
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./index.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/swsh/calculation/index.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/views/swsh/calculation/index.vue?vue&type=style&index=0&id=114771f5&scoped=true&lang=css&":
+/*!****************************************************************************************************************!*\
+  !*** ./resources/js/views/swsh/calculation/index.vue?vue&type=style&index=0&id=114771f5&scoped=true&lang=css& ***!
+  \****************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_index_vue_vue_type_style_index_0_id_114771f5_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/style-loader!../../../../../node_modules/css-loader??ref--5-1!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/src??ref--5-2!../../../../../node_modules/vue-loader/lib??vue-loader-options!./index.vue?vue&type=style&index=0&id=114771f5&scoped=true&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/swsh/calculation/index.vue?vue&type=style&index=0&id=114771f5&scoped=true&lang=css&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_index_vue_vue_type_style_index_0_id_114771f5_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_index_vue_vue_type_style_index_0_id_114771f5_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_index_vue_vue_type_style_index_0_id_114771f5_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_index_vue_vue_type_style_index_0_id_114771f5_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_index_vue_vue_type_style_index_0_id_114771f5_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
 
 /***/ }),
 
