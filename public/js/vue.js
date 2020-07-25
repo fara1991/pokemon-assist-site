@@ -2309,9 +2309,17 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _const_string__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../const/string */ "./resources/js/const/string.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _const_string__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../const/string */ "./resources/js/const/string.js");
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
 //
 //
 //
@@ -2366,42 +2374,70 @@ __webpack_require__.r(__webpack_exports__);
       }, {
         key: 'すばやさ',
         sortable: true
+      }, {
+        key: 'ごうけい',
+        sortable: true
       }]
     };
   },
   methods: {
     loadBookList: function loadBookList() {
-      var list = [];
+      var _this = this;
 
-      if (localStorage.hasOwnProperty('book_list')) {
-        list = JSON.parse(localStorage.getItem('book_list'));
-      } else {
-        axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/api/book-list?versionId=8&bookId=1').then(function (res) {
-          list = res.data;
-          localStorage.setItem('book_list', JSON.stringify(res.data));
-        });
-      }
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+        var list, l;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                list = [];
 
-      var l = [];
-      list.forEach(function (b) {
-        var items = [];
-        var status = JSON.parse(b.baseStats).list;
-        items['No'] = 'No.' + b.bookNo;
-        items['なまえ'] = {
-          linkNo: b.bookNo,
-          regionId: b.regionId,
-          name: b.pokemonRegionName
-        };
-        items['たいりょく'] = status[0];
-        items['こうげき'] = status[1];
-        items['ぼうぎょ'] = status[2];
-        items['とくこう'] = status[3];
-        items['とくぼう'] = status[4];
-        items['すばやさ'] = status[5];
-        l.push(items);
-      });
-      this.bookList = l;
-      this.finishLoad = true;
+                if (!localStorage.hasOwnProperty('book_list')) {
+                  _context.next = 5;
+                  break;
+                }
+
+                list = JSON.parse(localStorage.getItem('book_list'));
+                _context.next = 7;
+                break;
+
+              case 5:
+                _context.next = 7;
+                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/api/book-list?versionId=8&bookId=1').then(function (res) {
+                  list = res.data;
+                  localStorage.setItem('book_list', JSON.stringify(res.data));
+                });
+
+              case 7:
+                l = [];
+                list.forEach(function (b) {
+                  var items = [];
+                  var status = JSON.parse(b.baseStats).list;
+                  items['No'] = 'No.' + b.bookNo;
+                  items['なまえ'] = {
+                    linkNo: b.bookNo,
+                    regionId: b.regionId,
+                    name: b.pokemonRegionName
+                  };
+                  items['たいりょく'] = status[0];
+                  items['こうげき'] = status[1];
+                  items['ぼうぎょ'] = status[2];
+                  items['とくこう'] = status[3];
+                  items['とくぼう'] = status[4];
+                  items['すばやさ'] = status[5];
+                  items['ごうけい'] = Number(status[0]) + Number(status[1]) + Number(status[2]) + Number(status[3]) + Number(status[4]) + Number(status[5]);
+                  l.push(items);
+                });
+                _this.bookList = l;
+                _this.finishLoad = true;
+
+              case 11:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }))();
     },
     go: function go(bookNo, regionId) {
       this.$router.push({
@@ -2419,7 +2455,7 @@ __webpack_require__.r(__webpack_exports__);
   computed: {
     // 算出プロパティ
     filteredList: function filteredList() {
-      var _this = this;
+      var _this2 = this;
 
       var filteredList = [];
       var filterId = 0;
@@ -2429,13 +2465,13 @@ __webpack_require__.r(__webpack_exports__);
 
           // 部分一致のものだけ検索結果に追加
           if (propertyName === 'なまえ') {
-            var hiragana = _const_string__WEBPACK_IMPORTED_MODULE_1__["default"].katakanaToHiragana(book[propertyName].name);
-            var katakana = _const_string__WEBPACK_IMPORTED_MODULE_1__["default"].hiraganaToKatakana(book[propertyName].name);
+            var hiragana = _const_string__WEBPACK_IMPORTED_MODULE_2__["default"].katakanaToHiragana(book[propertyName].name);
+            var katakana = _const_string__WEBPACK_IMPORTED_MODULE_2__["default"].hiraganaToKatakana(book[propertyName].name);
 
-            if (String(hiragana).indexOf(_this.keyword) === _this.invalidId && String(katakana).indexOf(_this.keyword) === _this.invalidId) {
+            if (String(hiragana).indexOf(_this2.keyword) === _this2.invalidId && String(katakana).indexOf(_this2.keyword) === _this2.invalidId) {
               continue;
             }
-          } else if (String(book[propertyName]).indexOf(_this.keyword) === _this.invalidId) {
+          } else if (String(book[propertyName]).indexOf(_this2.keyword) === _this2.invalidId) {
             continue;
           } // filter後の連番を割り振り
 
@@ -50673,7 +50709,12 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return !this.finishLoad
-    ? _c("div", [_c("b-spinner", { attrs: { variant: "primary" } })], 1)
+    ? _c(
+        "div",
+        { staticClass: "text-center" },
+        [_c("b-spinner", { attrs: { variant: "primary" } })],
+        1
+      )
     : _c(
         "div",
         [

@@ -1,5 +1,5 @@
 <template>
-    <div v-if="!this.finishLoad">
+    <div v-if="!this.finishLoad" class="text-center">
         <b-spinner variant="primary"></b-spinner>
     </div>
     <div v-else>
@@ -39,16 +39,17 @@
                     {key: 'とくこう', sortable: true},
                     {key: 'とくぼう', sortable: true},
                     {key: 'すばやさ', sortable: true},
+                    {key: 'ごうけい', sortable: true},
                 ]
             }
         },
         methods: {
-            loadBookList() {
+            async loadBookList() {
                 let list = [];
                 if (localStorage.hasOwnProperty('book_list')) {
                     list = JSON.parse(localStorage.getItem('book_list'));
                 } else {
-                    axios.get('/api/book-list?versionId=8&bookId=1').then(res => {
+                    await axios.get('/api/book-list?versionId=8&bookId=1').then(res => {
                         list = res.data;
                         localStorage.setItem('book_list', JSON.stringify(res.data));
                     });
@@ -66,6 +67,7 @@
                     items['とくこう'] = status[3];
                     items['とくぼう'] = status[4];
                     items['すばやさ'] = status[5];
+                    items['ごうけい'] = Number(status[0]) + Number(status[1]) + Number(status[2]) + Number(status[3]) + Number(status[4]) + Number(status[5]);
                     l.push(items);
                 });
                 this.bookList = l;
