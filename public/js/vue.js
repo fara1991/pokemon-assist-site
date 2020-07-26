@@ -50848,14 +50848,14 @@ var render = function() {
       _c(
         "b-button",
         {
-          attrs: { size: "lg", variant: "info", disabled: "" },
+          attrs: { size: "lg", variant: "info" },
           on: {
             click: function($event) {
               return _vm.goRanking()
             }
           }
         },
-        [_vm._v("ランキング(作成中)")]
+        [_vm._v("ランキング")]
       ),
       _vm._v(" "),
       _c(
