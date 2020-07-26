@@ -4,6 +4,13 @@
 ## gitlab-ci
 new_branch merge request. If master merge, after auto deploy
 
+## Android HTTP Connection Capture
+Survey required for Pokemon HOME API
+* Fiddler
+* My Android or iPhone
+
+[Methods](https://amimilab.com/2016/08/14/post-183/)
+
 ## task management
 [ClickUp](https://app.clickup.com)
 
