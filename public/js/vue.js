@@ -1980,13 +1980,9 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _const_book__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../const/book */ "./resources/js/const/book.js");
-
-
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _const_book__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../const/book */ "./resources/js/const/book.js");
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -1999,10 +1995,8 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToAr
 
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
-
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-
+//
+//
 //
 //
 //
@@ -2089,10 +2083,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   name: "Detail",
   data: function data() {
     return {
-      book: _const_book__WEBPACK_IMPORTED_MODULE_2__["default"],
+      book: _const_book__WEBPACK_IMPORTED_MODULE_1__["default"],
       finishLoad: false,
       regionList: [],
       bookNo: this.$route.query.book_no,
+      regionId: this.$route.query.region_id,
       pokemonName: '',
       bookName: '',
       skillList: [],
@@ -2145,60 +2140,44 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     loadPokemonDetail: function loadPokemonDetail() {
       var _this = this;
 
-      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
-          while (1) {
-            switch (_context.prev = _context.next) {
-              case 0:
-                _context.next = 2;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/api/book-list/".concat(_this.bookNo)).then(function (res) {
-                  _this.regionList = res.data;
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/book-list/".concat(this.bookNo)).then(function (res) {
+        _this.regionList = res.data;
 
-                  for (var i = 0; i < _this.regionList.length; ++i) {
-                    _this.regionList[i]['regionId'] = i;
-                  }
-                });
+        _this.regionChange(_this.regionId);
 
-              case 2:
-                _this.regionChange(_this.$route.query.region_id - 1);
-
-              case 3:
-              case "end":
-                return _context.stop();
-            }
-          }
-        }, _callee);
-      }))();
+        _this.finishLoad = true;
+      });
     },
     loadPersonal: function loadPersonal() {
-      var list = [];
+      var _this2 = this;
 
       if (localStorage.hasOwnProperty('personality_list')) {
-        list = JSON.parse(localStorage.getItem('personality_list'));
+        this.personalList = JSON.parse(localStorage.getItem('personality_list'));
       } else {
-        axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/api/personality-list').then(function (res) {
+        var list = [];
+        axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/api/personality-list').then(function (res) {
           list = res.data;
-          localStorage.setItem('personality_list', JSON.stringify(res.data));
+          console.log(list);
+          var l = [];
+          list.forEach(function (p) {
+            var text = "".concat(p.name, "(").concat(p.description, ")");
+            l.push({
+              id: p.personalId,
+              text: text,
+              value: JSON.parse(p.statusMagnifications)
+            });
+          });
+          _this2.personalList = l;
+          localStorage.setItem('personality_list', JSON.stringify(l));
         });
       }
-
-      var l = [];
-      list.forEach(function (p) {
-        var text = "".concat(p.name, "(").concat(p.description, ")");
-        l.push({
-          id: p.personalId,
-          text: text,
-          value: JSON.parse(p.statusMagnifications)
-        });
-      });
-      this.personalList = l;
     },
     regionChange: function regionChange() {
       var regionId = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
-      this.pokemonName = this.regionList[regionId].pokemonRegionName;
-      this.bookName = this.regionList[regionId].bookName; // this.skillList = JSON.parse(data.skillIdList);
+      this.pokemonName = this.regionList[regionId - 1].pokemonRegionName;
+      this.bookName = this.regionList[regionId - 1].bookName; // this.skillList = JSON.parse(data.skillIdList);
 
-      var list = JSON.parse(this.regionList[regionId].baseStats).list;
+      var list = JSON.parse(this.regionList[regionId - 1].baseStats).list;
       this.maxBvValue = Math.max.apply(Math, _toConsumableArray(list)); // max値の50%以下なら黄、25%以下なら赤
 
       var colorList = [];
@@ -2248,28 +2227,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       return this.personalList[this.personalId - 1];
     },
     initialize: function initialize() {
-      var _this2 = this;
-
-      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
-          while (1) {
-            switch (_context2.prev = _context2.next) {
-              case 0:
-                _context2.next = 2;
-                return _this2.loadPokemonDetail();
-
-              case 2:
-                _this2.loadPersonal();
-
-                _this2.finishLoad = true;
-
-              case 4:
-              case "end":
-                return _context2.stop();
-            }
-          }
-        }, _callee2);
-      }))();
+      this.loadPokemonDetail();
+      this.loadPersonal();
     }
   },
   created: function created() {
@@ -2294,6 +2253,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }
 
       return status;
+    },
+    calcTotalEvValue: function calcTotalEvValue() {
+      var value = 0;
+      this.evList.forEach(function (p) {
+        value += p.value;
+      });
+      return value;
     }
   }
 });
@@ -50257,14 +50223,14 @@ var render = function() {
                     )
                   ]),
                   _vm._v(" "),
-                  _c(
-                    "b-container",
-                    [
-                      _c(
-                        "b-row",
-                        _vm._l(_vm.regionList, function(d) {
-                          return _vm.regionList.length !== 1
-                            ? _c(
+                  _vm.regionList.length !== 1
+                    ? _c(
+                        "b-container",
+                        [
+                          _c(
+                            "b-row",
+                            _vm._l(_vm.regionList, function(d) {
+                              return _c(
                                 "b-col",
                                 { key: d.regionId },
                                 [
@@ -50283,13 +50249,13 @@ var render = function() {
                                 ],
                                 1
                               )
-                            : _vm._e()
-                        }),
+                            }),
+                            1
+                          )
+                        ],
                         1
                       )
-                    ],
-                    1
-                  )
+                    : _vm._e()
                 ],
                 1
               )
@@ -50433,7 +50399,17 @@ var render = function() {
                   _c(
                     "b-card-text",
                     { staticClass: "text-center font-weight-bolder" },
-                    [_vm._v("努力値(0 〜 252, 計510)")]
+                    [
+                      _vm._v(
+                        "\n                努力値(0 〜 252) 計\n                "
+                      ),
+                      this.calcTotalEvValue > 510
+                        ? _c("span", { staticClass: "text-danger" }, [
+                            _vm._v(_vm._s(this.calcTotalEvValue))
+                          ])
+                        : _c("span", [_vm._v(_vm._s(this.calcTotalEvValue))]),
+                      _vm._v("\n                / 510\n            ")
+                    ]
                   ),
                   _vm._v(" "),
                   _vm._l(_vm.evList, function(ev) {
@@ -50624,15 +50600,7 @@ var render = function() {
                     ? _c("b-card-text", { staticClass: "mt-3" }, [
                         _vm._v("性格: " + _vm._s(_vm.selectedPersonal().text))
                       ])
-                    : _vm._e(),
-                  _vm._v(" "),
-                  _c(
-                    "b-card-text",
-                    { staticClass: "text-center font-weight-bolder mt-4" },
-                    [_vm._v("持ち物")]
-                  ),
-                  _vm._v(" "),
-                  _c("b-card-text", [_vm._v("未実装")])
+                    : _vm._e()
                 ],
                 1
               )

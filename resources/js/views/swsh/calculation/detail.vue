@@ -6,9 +6,9 @@
         <b-card-group class="text-center font-weight-bolder">
             <b-card>
                 <b-card-text>図鑑No.{{bookNo}} {{pokemonName}}</b-card-text>
-                <b-container>
+                <b-container v-if="regionList.length !== 1">
                     <b-row>
-                        <b-col v-if="regionList.length !== 1" v-for="d in regionList" :key="d.regionId">
+                        <b-col v-for="d in regionList" :key="d.regionId">
                             <b-button size="sm" variant="primary" @click="regionChange(d.regionId)">{{d.region}}</b-button>
                         </b-col>
                     </b-row>
@@ -37,7 +37,12 @@
                 </div>
             </b-card>
             <b-card>
-                <b-card-text class="text-center font-weight-bolder">努力値(0 〜 252, 計510)</b-card-text>
+                <b-card-text class="text-center font-weight-bolder">
+                    努力値(0 〜 252) 計
+                    <span v-if="this.calcTotalEvValue > 510" class="text-danger">{{this.calcTotalEvValue}}</span>
+                    <span v-else>{{this.calcTotalEvValue}}</span>
+                    / 510
+                </b-card-text>
                 <div size="sm" v-for="ev in evList" :key="ev.id" @input="ev.value=book.validateNumber(ev.value, book.typeEv)" onkeydown="return !['.', 'e', 'E', '-', '+'].includes(event.key)">
                     <b-input-group>
                         <b-form class="m-lg-1">{{ev.name}}</b-form>
@@ -61,9 +66,6 @@
                     <b-form-select-option v-for="p in personalList" :key="p.id" :value="p.id">{{p.text}}</b-form-select-option>
                 </b-form-select>
                 <b-card-text class="mt-3" v-if="personalList.length !== 0">性格: {{selectedPersonal().text}}</b-card-text>
-
-                <b-card-text class="text-center font-weight-bolder mt-4">持ち物</b-card-text>
-                <b-card-text>未実装</b-card-text>
             </b-card>
         </b-card-group>
         <b-card-group>
@@ -90,6 +92,7 @@
                 finishLoad: false,
                 regionList: [],
                 bookNo: this.$route.query.book_no,
+                regionId: this.$route.query.region_id,
                 pokemonName: '',
                 bookName: '',
                 skillList: [],
@@ -117,43 +120,40 @@
             }
         },
         methods: {
-            async loadPokemonDetail() {
-                // 取得するまで待機
-                await axios.get(`/api/book-list/${this.bookNo}`).then(res => {
+            loadPokemonDetail() {
+                axios.get(`/api/book-list/${this.bookNo}`).then(res => {
                     this.regionList = res.data;
-                    for (let i = 0; i < this.regionList.length; ++i) {
-                        this.regionList[i]['regionId'] = i;
-                    }
+                    this.regionChange(this.regionId);
+                    this.finishLoad = true;
                 });
-                this.regionChange(this.$route.query.region_id - 1);
             },
             loadPersonal() {
-                let list = [];
                 if (localStorage.hasOwnProperty('personality_list')) {
-                    list = JSON.parse(localStorage.getItem('personality_list'));
+                    this.personalList = JSON.parse(localStorage.getItem('personality_list'));
                 } else {
+                    let list = [];
                     axios.get('/api/personality-list').then(res => {
                         list = res.data;
-                        localStorage.setItem('personality_list', JSON.stringify(res.data));
+                        console.log(list);
+                        let l = [];
+                        list.forEach(p => {
+                            let text = `${p.name}(${p.description})`;
+                            l.push({
+                                id: p.personalId,
+                                text: text,
+                                value: JSON.parse(p.statusMagnifications),
+                            });
+                        });
+                        this.personalList = l;
+                        localStorage.setItem('personality_list', JSON.stringify(l));
                     });
                 }
-
-                let l = [];
-                list.forEach(p => {
-                    let text = `${p.name}(${p.description})`;
-                    l.push({
-                        id: p.personalId,
-                        text: text,
-                        value: JSON.parse(p.statusMagnifications),
-                    });
-                });
-                this.personalList = l;
             },
             regionChange(regionId = 0) {
-                this.pokemonName = this.regionList[regionId].pokemonRegionName;
-                this.bookName = this.regionList[regionId].bookName;
+                this.pokemonName = this.regionList[regionId - 1].pokemonRegionName;
+                this.bookName = this.regionList[regionId - 1].bookName;
                 // this.skillList = JSON.parse(data.skillIdList);
-                let list = JSON.parse(this.regionList[regionId].baseStats).list;
+                let list = JSON.parse(this.regionList[regionId - 1].baseStats).list;
                 this.maxBvValue = Math.max(...list);
 
                 // max値の50%以下なら黄、25%以下なら赤
@@ -182,10 +182,9 @@
             selectedPersonal() {
                 return this.personalList[this.personalId - 1];
             },
-            async initialize() {
-                await this.loadPokemonDetail();
+            initialize() {
+                this.loadPokemonDetail();
                 this.loadPersonal();
-                this.finishLoad = true;
             }
         },
         created() {
@@ -209,6 +208,14 @@
                 }
 
                 return status;
+            },
+            calcTotalEvValue() {
+                let value = 0;
+                this.evList.forEach(p => {
+                    value += p.value;
+                });
+
+                return value;
             },
         }
     }
